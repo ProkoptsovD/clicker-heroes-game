@@ -1,0 +1,77 @@
+.preloader-screen {
+  --flasher-width: 100px;
+  --flasher-height: calc(var(--flasher-width) / 2.5);
+  --flasher-red-light: #e32929;
+  --flasher-blue-light: #156dbc;
+
+  --middle-bar-width: calc(var(--flasher-width) / 2.5);
+  --middle-bar-height: var(--flasher-height);
+  --middle-bar-color: #9c9c9c;
+
+  --animation-speed: 1s;
+  --animation-delay: calc(var(--animation-speed) / 2);
+
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #222222;
+}
+
+.police-flasher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.police-flasher__light {
+  width: var(--flasher-width);
+  height: var(--flasher-height);
+}
+
+.police-flasher__middle-bar {
+  width: var(--middle-bar-width);
+  height: var(--middle-bar-height);
+  background-color: var(--middle-bar-color);
+}
+
+.police-flasher__light--blue {
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: var(--flasher-blue-light);
+  animation: lights var(--animation-speed) infinite;
+  box-shadow: 0 0 var(--flasher-width) var(--flasher-blue-light);
+}
+.police-flasher__light--red {
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+
+  background-color: var(--flasher-red-light);
+  animation: lights var(--animation-speed) infinite;
+  animation-delay: var(--animation-delay);
+  box-shadow: 0 0 var(--flasher-width) var(--flasher-red-light);
+}
+
+@keyframes lights {
+  0% {
+    opacity: 8%;
+  }
+  10% {
+    opacity: 100%;
+  }
+  20% {
+    opacity: 8%;
+  }
+  80% {
+    opacity: 8%;
+  }
+  90% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 8%;
+  }
+}
