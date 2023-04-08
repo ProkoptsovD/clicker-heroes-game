@@ -19,6 +19,7 @@
   justify-content: center;
 
   background-color: #222222;
+  z-index: 100;
 }
 
 .police-flasher {
