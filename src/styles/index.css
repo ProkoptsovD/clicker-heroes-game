@@ -1,3 +1,6 @@
 @import './reset-default.css';
 @import './global.css';
-@import './preloader.css';
+@import './utilities.css';
+
+/* COMPONENTS STYLES */
+@import './components/index.css';
