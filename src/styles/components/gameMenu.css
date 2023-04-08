@@ -1,0 +1,119 @@
+.game-menu {
+  --btn-fs: 2rem;
+  --btn-text-fill-clr: #ffffff;
+  --btn-text-stroke-clr: #000000;
+  --side-padding: 6px;
+  --shadow-clr: #222222;
+  /* --shadow-clr: #fa5f55; */
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  min-width: 250px;
+  max-width: max(400px, 500px);
+  margin-inline: auto;
+
+  aspect-ratio: 2 / 1;
+}
+
+.game-menu__side--left {
+  padding-right: var(--side-padding);
+  border-right: 1px solid #ff0000;
+}
+
+.game-menu__side--right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-left: var(--side-padding);
+  border-left: 1px solid #663399;
+}
+
+.game-menu__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.game-menu__list-item {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu-button {
+  font: inherit;
+  font-size: var(--btn-fs);
+
+  /* makes text outlined */
+  -webkit-text-fill-color: var(--btn-text-fill-clr);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--btn-text-stroke-clr);
+
+  /* reset btn default styles */
+  border: none;
+  background-color: transparent;
+  transition: transform 150ms;
+}
+
+.menu-button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  filter: drop-shadow(1px 0px 1px var(--shadow-clr));
+}
+
+.menu-button--active {
+  filter: drop-shadow(1px 0px 1px var(--shadow-clr));
+}
+
+.game-menu__frame-wrapper {
+  position: relative;
+  filter: saturate(0.3);
+}
+
+.game-menu__item-preview-frame {
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  mask: url('/src/assets/icons/previews/menu_item_preview_frame.svg') right/101% 109%;
+  -webkit-mask: url('/src/assets/icons/previews/menu_item_preview_frame.svg') right/101% 109%;
+}
+
+.preview {
+  position: absolute;
+  top: 51%;
+  left: 49%;
+  width: 82%;
+  transform: translate(-50%, -50%);
+}
+
+.preview__mask {
+  max-width: 115%;
+}
+
+.frame0,
+.frame1,
+.frame2,
+.frame3 {
+  background: linear-gradient(to right, #e69ce0, #1c92d2);
+  transform: rotateZ(5deg);
+}
+
+.frame2 {
+  transform: rotateZ(5deg) scale(0.8);
+}
+.frame3 {
+  transform: rotateZ(5deg) scale(0.8);
+}
+
+@media screen and (min-width: 420px) {
+  .game-menu {
+    --side-padding: 1rem;
+  }
+}
+@media screen and (min-width: 1240px) {
+  .game-menu {
+    --btn-fs: 3rem;
+  }
+}
