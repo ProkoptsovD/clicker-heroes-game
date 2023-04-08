@@ -2,6 +2,7 @@
  * It is IMPORTANT all custom components that are used
  * must be at IMPORTED, othrewise they won't be rendered
  */
+import { Preloader } from './src/components/Preloader.js';
 import { GameMenu } from './src/components/gameMenu.js';
 import { HomeScreen } from './src/components/HomeScreen.js';
 
