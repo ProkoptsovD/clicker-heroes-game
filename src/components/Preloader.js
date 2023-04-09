@@ -4,7 +4,7 @@ export class Preloader extends WebComponent {
   static tag = 'preloader-screen';
 
   constructor(config) {
-    super(config);
+    super({ addSubscription: false, ...config });
   }
 
   render() {

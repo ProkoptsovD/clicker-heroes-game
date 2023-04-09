@@ -28,16 +28,6 @@
   margin-top: 9rem;
 }
 
-.logo__container {
-  width: 300px;
-  margin: 0 auto;
-}
-.logo__edition {
-  width: 40%;
-  margin: 0 auto;
-  filter: brightness(1.125);
-}
-
 /* MEDIA QUERIES */
 
 @media screen and (min-width: 400px) {

@@ -1,0 +1,18 @@
+.logo__container {
+  --logo-width: 300px;
+
+  margin: 0 auto;
+}
+
+.logo,
+.logo__container {
+  margin: 0 auto;
+}
+.logo {
+  width: var(--logo-width);
+}
+.logo__edition {
+  width: calc(var(--logo-width) / 2.5);
+  margin: 0 auto;
+  filter: brightness(1.125);
+}
