@@ -9,16 +9,24 @@ import { HomeScreen } from './src/components/HomeScreen.js';
 // consts
 import { menuPreviews } from './src/constants/menuPreviews.js';
 
-document.body.appendChild(
-  new HomeScreen({
-    childrenElements: [
-      {
-        tag: GameMenu.tag,
-        props: {
-          items: ['Story', 'Settings', 'Credits', 'Quit'],
-          previews: menuPreviews
+import { store } from './src/store/store.js';
+
+const rootContainer = document.querySelector('#root');
+
+function initApp() {
+  rootContainer.appendChild(
+    new HomeScreen({
+      childrenElements: [
+        {
+          tag: GameMenu.tag,
+          props: {
+            items: ['Story', 'Settings', 'Credits', 'Quit'],
+            previews: menuPreviews
+          }
         }
-      }
-    ]
-  })
-);
+      ]
+    })
+  );
+}
+
+initApp();

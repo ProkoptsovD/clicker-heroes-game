@@ -1,0 +1,1 @@
+export const SET_ACTIVE_MENU_TAB = 'SET_ACTIVE_MENU_TAB';

@@ -1,19 +1,25 @@
 import { WebComponent } from '../lib/WebComponent.js';
-// import { GameMenu } from './gameMenu.js';
 
 export class HomeScreen extends WebComponent {
   static tag = 'home-screen';
   /**
-   * @param {{ childrenElements: Array<string> | string | undefined }} config
+   * @param {{
+   *  childrenElements: Array<{tag: string, props: { items: Array<string>, previews: Array<string> }}> | string | undefined
+   *  tag: GameMenu.tag
+   * }} config
    */
-  constructor({ childrenElements, instance, ...restConfig } = {}) {
-    super(restConfig);
+  constructor({ childrenElements, ...restConfig } = {}) {
+    /**
+     * we don't want this componnent to rerender on store value changes
+     * so here we cancel the auto subscription which is implelemted on parent class
+     */
+    super({ addSubscription: false, ...restConfig });
 
-    this.childrenElements = childrenElements[0];
+    this.childrenElements = childrenElements;
   }
 
   render() {
-    const children = this._transformIntoTag(this.childrenElements);
+    const children = this.childrenElements.map(this._transformIntoTag.bind(this)).join('');
 
     this.innerHTML = `
         <section class="main-screen">
@@ -35,8 +41,3 @@ export class HomeScreen extends WebComponent {
 }
 
 customElements.define('home-screen', HomeScreen);
-
-const a = `<h1 class="main-screen__title">
-<span class="main-screen__title--text-part">CLICKER HEROES</span>
-<span class="main-screen__title--text-part main-screen__title--bottom">Robbery Edition</span>
-</h1>`;

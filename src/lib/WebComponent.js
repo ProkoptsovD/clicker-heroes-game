@@ -1,3 +1,5 @@
+import { store } from '../store/store.js';
+
 /**
  * Here we use ONLY autonomous web components
  * 'cause those ones have best browser support
@@ -8,10 +10,21 @@
  * check spec here: https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements
  */
 export class WebComponent extends HTMLElement {
-  constructor({ template } = {}) {
+  constructor({ externalStore = store, addSubscription = true, template } = {}) {
     super();
 
+    this.store = externalStore;
     this.template = template ?? `<div>WebComponent default template</div>`;
+
+    /** binded rerender func for store subscription */
+    this.subscription = this.rerender.bind(this);
+
+    /**
+     * make subscribtion to store in oreder to rerender component
+     * but it's optional, 'cause not every instantiated component
+     * will need to reflect on store changes
+     */
+    if (addSubscription) this.store.subscribe(this.subscription);
   }
 
   /**
@@ -20,6 +33,14 @@ export class WebComponent extends HTMLElement {
    */
   connectedCallback() {
     this.render();
+  }
+
+  /**
+   * HTML element lifecycle method
+   * invokes when element is successfully unmounted from the DOM
+   */
+  disconnectedCallback() {
+    this.store.unsibscribe(this.subscription);
   }
 
   /**
@@ -86,5 +107,14 @@ export class WebComponent extends HTMLElement {
    */
   render() {
     this.innerHTML = this.template;
+  }
+
+  /**
+   * method to rerender component when it's needed
+   */
+  rerender() {
+    this.innerHTML = '';
+    this.disconnectedCallback();
+    this.connectedCallback();
   }
 }
