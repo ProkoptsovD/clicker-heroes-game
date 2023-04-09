@@ -1,4 +1,5 @@
 import { WebComponent } from '../lib/WebComponent.js';
+import { Logo } from './Logo.js';
 
 export class HomeScreen extends WebComponent {
   static tag = 'home-screen';
@@ -24,11 +25,8 @@ export class HomeScreen extends WebComponent {
     this.innerHTML = `
         <section class="main-screen">
           <div class="container main-screen__container">
-              <div class="logo__container">
-               <img class="logo" src="/src/assets/images/logo.png" alt="logo" />
-               <img class="logo__edition" src="/src/assets/images/edition.png" alt="edition logo" />
-              </div>
-
+              <app-logo></app-logo>
+    
               <div class="main-screen__content-holder">
               ${children}
               </div>

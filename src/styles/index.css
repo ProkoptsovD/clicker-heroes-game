@@ -1,3 +1,7 @@
+/* variables */
+@import './variables.css';
+
+/* GLOBAL */
 @import './reset-default.css';
 @import './global.css';
 @import './utilities.css';

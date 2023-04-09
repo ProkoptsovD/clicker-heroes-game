@@ -1,0 +1,8 @@
+:root {
+  /* COLORS */
+
+  /* validation colors */
+  --clr-neutral: #d1d1d1;
+  --clr-valid: #3cbc81;
+  --clr-invalid: #e74a3b;
+}

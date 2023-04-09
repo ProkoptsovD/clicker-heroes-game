@@ -9,3 +9,26 @@
     padding-inline: 2rem;
   }
 }
+
+/* POSITIONING */
+.full-height {
+  height: 100dvh;
+}
+
+.centered-col {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* SPACING */
+.mb-1rem {
+  margin-bottom: 1rem !important;
+}
+.mb-2rem {
+  margin-bottom: 2rem !important;
+}
+.pt-3rem {
+  padding-top: 3rem !important;
+}

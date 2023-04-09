@@ -10,10 +10,12 @@ import { HomeScreen } from './src/components/HomeScreen.js';
 import { menuPreviews } from './src/constants/menuPreviews.js';
 
 import { store } from './src/store/store.js';
+import { SignUpForm } from './src/components/SignUpForm.js';
 
 const rootContainer = document.querySelector('#root');
 
 function initApp() {
+  rootContainer.appendChild(new SignUpForm());
   rootContainer.appendChild(
     new HomeScreen({
       childrenElements: [
