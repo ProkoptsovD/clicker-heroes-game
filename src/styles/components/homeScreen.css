@@ -59,6 +59,12 @@
     background-position: 80% 115%;
   }
 }
+
+@media screen and (min-width: 1440px) {
+  .main-screen__bg-container {
+    background-position: 80% 133%;
+  }
+}
 @media screen and (min-width: 1024px) {
   .main-screen__content-holder {
     margin-top: 4rem;

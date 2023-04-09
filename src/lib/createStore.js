@@ -5,7 +5,7 @@
  * @param {Object} initialState // possibility of adding store initial state
  * @returns {Object} store with traditional API ----> { getState, dispatch, subscribe, unsibscribe }
  */
-const createStore = (reducer, initialState) => {
+export const createStore = (reducer, initialState) => {
   /** state Oobject containing info about app */
   let state = initialState ?? {};
 
@@ -25,7 +25,10 @@ const createStore = (reducer, initialState) => {
     state = reducer(state, action);
 
     // notify reducers
-    subscriptions.forEach((subscriber) => subscriber());
+    subscriptions.forEach((subscriber) => {
+      console.log('from subscriber');
+      subscriber();
+    });
   };
 
   /**
@@ -34,6 +37,10 @@ const createStore = (reducer, initialState) => {
    * @returns {void}
    */
   const subscribe = (subscriber) => {
+    const hasSubscription = subscriptions.find((sub) => sub === subscriber);
+
+    if (hasSubscription) return;
+
     subscriptions.push(subscriber);
   };
 
@@ -43,7 +50,7 @@ const createStore = (reducer, initialState) => {
    * @returns {void}
    */
   const unsibscribe = (subscriber) => {
-    subscribers = subscribers.filter((l) => l !== subscriber);
+    subscriptions = subscriptions.filter((l) => l !== subscriber);
   };
 
   return { getState, dispatch, subscribe, unsibscribe };
