@@ -1,0 +1,101 @@
+/* ============== enemy =========== */
+.enemy {
+  position: relative;
+  margin-inline: auto;
+
+  /* temp */
+  margin-top: 100px;
+}
+/* ============== enemy =========== */
+
+/* ============= sahred frame ========== */
+.frame {
+  position: absolute;
+  background-size: 100%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  min-width: 250px;
+
+  aspect-ratio: 1.667 / 1;
+}
+
+.frame .frame__text {
+  position: absolute;
+}
+/* ============= sahred frame ========== */
+
+/* ============== damage effect =========== */
+.damage {
+  position: absolute;
+  top: 18%;
+  right: -25%;
+  width: 100px;
+  height: 50px;
+
+  font-weight: 500;
+  font-size: 1.125rem;
+  color: #e33838;
+
+  opacity: 1;
+  animation: up-and-fade 1000ms linear forwards;
+}
+
+@keyframes up-and-fade {
+  to {
+    top: 0;
+    opacity: 0;
+  }
+}
+/* ============== damage effect =========== */
+
+/* ============== punching effect =========== */
+
+.punch-effect {
+  position: absolute;
+  top: 0;
+  left: 80%;
+  background-image: url('/src//assets/icons/effects/boom.svg');
+  background-repeat: no-repeat;
+  background-position-x: 0;
+  background-position-y: 0;
+}
+/* ============== punching effect =========== */
+
+/* ============= 1 LEVEL ENEMY FRAMES ============= */
+.frame__1--intro {
+  top: -14%;
+  left: -120%;
+}
+
+.frame__1--isNotArrested {
+  left: -108%;
+  top: -19%;
+  min-width: 320px;
+  background-size: 95%;
+}
+
+.frame__1--isArrested {
+  left: -97%;
+  top: -20%;
+  min-width: 350px;
+  background-size: 95%;
+}
+
+.frame__1--intro .frame__text {
+  top: 24%;
+  left: 5%;
+}
+
+.frame__1--isNotArrested .frame__text {
+  top: 47%;
+  left: 33%;
+  width: 45%;
+}
+
+.frame__1--isArrested .frame__text {
+  top: 32%;
+  left: 33%;
+  width: 43%;
+}
+
+/* ============= 1 LEVEL ENEMY FRAMES ============= */
