@@ -1,10 +1,14 @@
 /* ============== enemy =========== */
 .enemy {
   position: relative;
-  margin-inline: auto;
+  z-index: 2;
 
   /* temp */
   margin-top: 100px;
+}
+
+.enemy img {
+  margin-inline: auto;
 }
 /* ============== enemy =========== */
 
@@ -28,16 +32,19 @@
 .damage {
   position: absolute;
   top: 18%;
-  right: -25%;
+  right: 42%;
   width: 100px;
   height: 50px;
 
-  font-weight: 500;
-  font-size: 1.125rem;
+  font-weight: 700;
+  font-size: 1.5rem;
   color: #e33838;
+  text-align: center;
 
   opacity: 1;
   animation: up-and-fade 1000ms linear forwards;
+  z-index: 10000;
+  background-color: transparent;
 }
 
 @keyframes up-and-fade {
@@ -47,19 +54,6 @@
   }
 }
 /* ============== damage effect =========== */
-
-/* ============== punching effect =========== */
-
-.punch-effect {
-  position: absolute;
-  top: 0;
-  left: 80%;
-  background-image: url('/src//assets/icons/effects/boom.svg');
-  background-repeat: no-repeat;
-  background-position-x: 0;
-  background-position-y: 0;
-}
-/* ============== punching effect =========== */
 
 /* ============= 1 LEVEL ENEMY FRAMES ============= */
 .frame__1--intro {

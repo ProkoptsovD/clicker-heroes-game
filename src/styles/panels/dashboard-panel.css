@@ -1,0 +1,85 @@
+.dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+  padding: 1rem;
+  /* background-color: #ffffff; */
+  border-radius: 20px;
+  color: wheat;
+}
+
+.dashboard__enemy-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.dashboard__enemy-info-character-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 50px;
+  height: 50px;
+
+  aspect-ratio: 1 / 1;
+}
+
+.dashboard__enemy-info-name-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dashboard__enemy-info-character-name {
+  font-weight: 600;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.dashboard__enemy-info-character-nickname {
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.dashboard__character-stamina-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.dashboard__character-stamina-text {
+  font-weight: 600;
+}
+.dashboard__stamina-progress {
+  --bg-clr: #2a292a;
+  --width: 100%;
+
+  position: relative;
+  height: 10px;
+  width: 200px;
+  background: var(--bg-clr);
+  border-radius: 25px;
+}
+
+.dashboard__stamina-progress-fill {
+  position: absolute;
+  height: 0.5rem;
+  width: var(--width);
+  background: #228b22;
+  border-radius: 15px;
+}
+
+.dashboard__total-score {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dashboard__total-score-text {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.dashboard__total-score-count {
+  font-size: 1.5rem;
+}

@@ -25,4 +25,4 @@ export class Logo extends WebComponent {
   }
 }
 
-customElements.define('app-logo', Logo);
+customElements.define(Logo.tag, Logo);

@@ -38,4 +38,4 @@ export class HomeScreen extends WebComponent {
   }
 }
 
-customElements.define('home-screen', HomeScreen);
+customElements.define(HomeScreen.tag, HomeScreen);
