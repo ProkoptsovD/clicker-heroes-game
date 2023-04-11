@@ -1,1 +1,6 @@
 export const SET_ACTIVE_MENU_TAB = 'SET_ACTIVE_MENU_TAB';
+export const DECREMENT_STAMINA = 'DECREMENT_STAMINA';
+export const SET_STAMINA = 'SET_STAMINA';
+export const RESET_STAMINA = 'RESET_STAMINA';
+export const NEXT_LEVEL = 'NEXT_LEVEL';
+export const SET_TOTAL_SCORE = 'SET_TOTAL_SCORE';

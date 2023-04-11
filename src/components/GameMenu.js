@@ -41,6 +41,9 @@ export class GameMenu extends WebComponent {
     this.tabs = [...(this.querySelectorAll('[data-tab') ?? [])];
   }
 
+  /**
+   * switches image next to tab
+   */
   onmouseover({ target }) {
     const { tab } = target.dataset;
     const { activeTab } = this.store.getState();
@@ -50,6 +53,9 @@ export class GameMenu extends WebComponent {
     this.store.dispatch({ type: SET_ACTIVE_MENU_TAB, payload: { activeTab: tab } });
   }
 
+  /**
+   * selects menu tab
+   */
   onclick({ target }) {
     const { tab } = target.dataset;
 
@@ -110,4 +116,4 @@ export class GameMenu extends WebComponent {
   }
 }
 
-customElements.define('game-menu', GameMenu);
+customElements.define(GameMenu.tag, GameMenu);

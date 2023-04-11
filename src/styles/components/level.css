@@ -1,0 +1,136 @@
+.level {
+  --height: 100px;
+  --bg-clr: #000000;
+
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+  background-color: var(--bg-clr);
+}
+.level__enemy-container-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.bg {
+  background-repeat: no-repeat;
+  background-position-x: 0;
+  background-size: 100%;
+  transition: transform 200ms linear;
+
+  transform: translateX(-20px);
+
+  animation: slide-in-to-right 1s linear forwards;
+}
+
+.level--1 {
+  background-size: 100%;
+  background-position-y: 108%;
+}
+
+.level--2 {
+  background-size: 100% 115%;
+  background-position-y: 70%;
+}
+.level--3 {
+  background-size: 100% 115%;
+  background-position-y: 70%;
+}
+.level--4 {
+  background-position-y: 30%;
+}
+
+.level__header {
+  position: absolute;
+  top: -5%;
+  left: 0;
+  right: 0;
+  height: var(--height);
+  background-color: var(--bg-clr);
+  transition: all 200ms;
+  animation: top 1s forwards 1s;
+  z-index: 3;
+}
+
+.level__top-dashboard-wrapper {
+  position: absolute;
+  inset: 0;
+  background-color: inherit;
+  padding: 1.25rem;
+}
+
+.level__enemy-container {
+  position: relative;
+  top: -20px;
+  height: calc(100% - var(--height) * 1.5);
+}
+
+.level__footer {
+  position: absolute;
+  bottom: -5%;
+  left: 0;
+  right: 0;
+  height: var(--height);
+  background-color: var(--bg-clr);
+  transition: all 200ms;
+  animation: bottom 1s forwards 1s;
+  z-index: 3;
+}
+
+.level__footer-dialog-window-wrapper {
+  position: absolute;
+  inset: 0;
+  background-color: inherit;
+}
+
+.level__footer-controls-panel-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--height);
+}
+
+@keyframes slide-in-to-right {
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes top {
+  to {
+    top: 0;
+  }
+}
+@keyframes bottom {
+  to {
+    bottom: 0;
+  }
+}
+
+.arrested {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+
+  width: 300px;
+  height: 200px;
+
+  transform: translate(-50%, -50%) rotate(25deg) scale(3);
+  transition: transform 200ms ease-out;
+  animation: arrested 1s forwards cubic-bezier(1, 0.31, 0.79, 0.6) 1s;
+  opacity: 0;
+  z-index: 100;
+}
+
+@keyframes arrested {
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(25deg) scale(1);
+  }
+}

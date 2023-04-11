@@ -26,7 +26,6 @@ export const createStore = (reducer, initialState) => {
 
     // notify reducers
     subscriptions.forEach((subscriber) => {
-      console.log('from subscriber');
       subscriber();
     });
   };

@@ -11,6 +11,7 @@ export class Enemy {
    *  appearence: string;
    *  level: number;
    *  className: string;
+   *  location: string;
    *  size: {
    *    width: string,
    *    height: string
@@ -18,35 +19,48 @@ export class Enemy {
    *  phrases: {
    *    intro: string,
    *    isArrested: string;
-   *  }
+   *  };
+   * dialogues: Array<{ enemy: string; detective: string }>
+   * dialogOrder: 'enemyDetective' | 'detectiveEnemy';
+   * onClick: () => void;
+   * dashboardTheme: string
    * }} config
    */
   constructor({
     name = 'Enemy',
+    nickname = 'The NickName',
     stamina = 10,
     level = 1,
+    location = '',
     appearence = '/src/assets/icons/characters/gang_character_01_bank.svg',
     size = { width: '200px', height: 'auto' },
     className = 'enemy',
-    phrases = { intro: 'Hi', isArrested: "I'm arrested" }
+    phrases = { intro: 'Hi', isArrested: "I'm arrested" },
+    dialogues = [],
+    dialogOrder = 'enemyDetective',
+    dashboardTheme,
+    onClick = () => console.log(`${this.name} is hit`)
   } = {}) {
     this.name = name;
+    this.nickname = nickname;
     this.stamina = stamina;
     this.level = level;
     this.size = size;
+    this.location = location;
     this.phrases = phrases;
     this.appearence = appearence;
     this.className = className;
+    this.dialogues = dialogues;
+    this.dialogOrder = dialogOrder;
+    this.dashboardTheme = dashboardTheme;
     this.speechFrames = {
       intro: '/src/assets/icons/speech/speech_frame_05.svg',
       isArrested: '/src/assets/icons/speech/speech_frame_03.svg'
     };
     this.killDamageIn = 1100;
+    this.onClick = onClick;
 
     this.create();
-
-    // debug
-    window.enemy = this;
   }
 
   // creates enemy
@@ -55,13 +69,21 @@ export class Enemy {
     const enemy = document.createElement('img');
 
     // container config
-    enemyContainer.style.width = this.size.width;
-    enemyContainer.style.height = this.size.height;
-    enemyContainer.classList = this.className;
+    enemyContainer.classList.add('enemy', this.className);
 
     // enemy config
+    enemy.style.width = this.size.width;
+    enemy.style.height = this.size.height;
     enemy.alt = this.name;
     enemy.src = this.appearence;
+    enemy.role = 'button';
+    enemy.ariaLabel = 'button';
+    enemy.setAttribute('draggable', 'false');
+
+    enemy.onclick = () => {
+      this.showDamage();
+      this.onClick();
+    };
 
     enemyContainer.appendChild(enemy);
     this.domElement = enemyContainer;
@@ -70,7 +92,7 @@ export class Enemy {
     this.createDamageIndicator();
   }
 
-  // creates frames with speech text
+  /** creates frames with speech text */
   createSpeechFrames() {
     this.speechFrameElements = Object.entries(this.speechFrames).reduce((acc, [key, frame]) => {
       const el = document.createElement('div');
@@ -136,6 +158,7 @@ export class Enemy {
     this.domElement.appendChild(this.speechFrameElements[key]);
   }
 
+  /** shows damage effect per one click */
   showDamage() {
     const damageIndicator = this.createDamageIndicator();
 
@@ -145,5 +168,11 @@ export class Enemy {
       () => this.domElement.removeChild(damageIndicator),
       this.killDamageIn
     );
+  }
+
+  /** destroys click event put on enemy */
+  destroyClickListener() {
+    const img = this.domElement.querySelector('img');
+    img.onclick = () => {};
   }
 }

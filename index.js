@@ -2,27 +2,35 @@
  * It is IMPORTANT all custom components that are used
  * must be at IMPORTED, othrewise they won't be rendered
  */
-import { Preloader } from './src/components/Preloader.js';
-import { GameMenu } from './src/components/gameMenu.js';
-import { HomeScreen } from './src/components/HomeScreen.js';
-
-// consts
-import { menuPreviews } from './src/constants/menuPreviews.js';
-
+import { Level } from './src/components/Level.js';
+import { Game } from './src/components/Game.js';
 import { store } from './src/store/store.js';
-import { SignUpForm } from './src/components/SignUpForm.js';
-import { Enemy } from './src/lib/Enemy.js';
 
-const rootContainer = document.querySelector('#root');
-// const enemy = new Enemy({
-//   phrases: {
-//     intro: "Hi, Ventura! You think you can get me? Let's try!!!",
-//     isArrested: "Noooooooo! I can't believe you have caught me...."
-//   }
-// });
+// characters
+import { TonyArcado } from './src/components/characters/TonyArcado.js';
+import { BellaMorello } from './src/components/characters/BellaMorello.js';
+import { SalvatoreVitale } from './src/components/characters/SalvatoreVitale.js';
+import { DominicDasher } from './src/components/characters/DominicDasher.js';
+import { AlfredoRossi } from './src/components/characters/AlfredoRossi.js';
+
+// internal
+import { localStorageService } from './src/services/storageService.js';
+
+const root = document.querySelector('#root');
+
+const levels = {
+  1: new Level({ enemy: TonyArcado }),
+  2: new Level({ enemy: BellaMorello }),
+  3: new Level({ enemy: SalvatoreVitale }),
+  4: new Level({ enemy: DominicDasher }),
+  5: new Level({ enemy: AlfredoRossi })
+};
+
+const game = new Game({ root, levels, store, localStorageService });
+
+game.play();
 
 function initApp() {
-  enemy.addToDOM(rootContainer);
   // rootContainer.appendChild(new SignUpForm());
   // rootContainer.appendChild(
   //   new HomeScreen({

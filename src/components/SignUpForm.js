@@ -8,8 +8,11 @@ import { localStorageService } from '../services/storageService.js';
 // keys
 import * as APP_KEYS from '/src/constants/appKeys.js';
 
+/**
+ * Form to register user
+ */
 export class SignUpForm extends WebComponent {
-  static tag = 'signup-form';
+  static tag = 'app-signup-form';
   static defaultTitle = 'Sign up';
   static defaultButtonText = 'Enter the service';
   static inputNames = {
@@ -61,7 +64,7 @@ export class SignUpForm extends WebComponent {
     this.formRef = this.querySelector('.signup-form');
   }
 
-  // subscribes to input events
+  /** subscribes to input events */
   handleInputEvents(type) {
     const { userName, characterName, email } = this.formRef.elements;
 
@@ -225,4 +228,4 @@ export class SignUpForm extends WebComponent {
   }
 }
 
-customElements.define('signup-form', SignUpForm);
+customElements.define(SignUpForm.tag, SignUpForm);

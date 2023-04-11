@@ -20,4 +20,4 @@ export class Preloader extends WebComponent {
   }
 }
 
-customElements.define('preloader-screen', Preloader);
+customElements.define(Preloader.tag, Preloader);
