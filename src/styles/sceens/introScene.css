@@ -1,0 +1,105 @@
+.intro__character {
+  position: absolute;
+  top: -150%;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 200ms;
+  animation: turn-in 500ms forwards 1.5s;
+}
+
+@keyframes turn-in {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.intro__character-speech {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  gap: 1rem;
+  width: 70%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 200ms;
+  animation-name: turn-in;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+  animation-delay: 2s;
+}
+
+.intro__character-speech.delay-1s {
+  animation-delay: 1s;
+}
+
+.intro__character-icon {
+  --size: 100px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: var(--size);
+  height: var(--size);
+  aspect-ratio: 1/1;
+  border: 2px solid rebeccapurple;
+  border-radius: 10px;
+}
+.intro__character-icon-image {
+  width: 95%;
+  height: 95%;
+}
+
+.intro__character-speech-text {
+  height: 72%;
+  color: #ffffff;
+}
+
+.intro__to-crime-scene-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: inherit;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #545454;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem;
+
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 200ms;
+  animation: turn-in 500ms forwards 3s;
+}
+
+.intro__to-crime-scene-button:hover {
+  cursor: pointer;
+}
+
+.intro-frame-1 {
+  background-size: 120%;
+}
+
+.intro__next-button {
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  background-color: #545454;
+  border-radius: 10px;
+
+  transform: translateY(-50%);
+}
+
+.intro__next-button:hover {
+  cursor: pointer;
+}

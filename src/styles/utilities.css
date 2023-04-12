@@ -32,3 +32,9 @@
 .pt-3rem {
   padding-top: 3rem !important;
 }
+
+/* VISUAL */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}

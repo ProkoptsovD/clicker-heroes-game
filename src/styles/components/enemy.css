@@ -47,6 +47,10 @@
   background-color: transparent;
 }
 
+.damage::selection {
+  background-color: transparent;
+}
+
 @keyframes up-and-fade {
   to {
     top: 0;

@@ -3,7 +3,7 @@ import { Enemy } from '../../lib/Enemy.js';
 export const DominicDasher = new Enemy({
   name: 'Dominic Dasher',
   nickname: 'Fat Dominic',
-  stamina: 75,
+  stamina: 10,
   level: 4,
   className: 'dominicDasher',
   appearence: '/src/assets/icons/characters/gang_character_04_sunset.svg',
@@ -26,6 +26,6 @@ export const DominicDasher = new Enemy({
         'Where there are three times, there is a fourth one. All your buddies have already been detained and at the same moment are testifying against each other.'
     }
   ],
-  dialogOrder: 'detectiveEnemy',
+  dialogueOrder: 'downTop',
   dashboardTheme: 'sunset-street'
 });

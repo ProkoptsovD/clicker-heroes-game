@@ -1,6 +1,8 @@
 .level {
   --height: 100px;
   --bg-clr: #000000;
+  --position: -5%;
+  --anim-config: 1s forwards;
 
   position: relative;
   width: 100%;
@@ -47,13 +49,13 @@
 
 .level__header {
   position: absolute;
-  top: -5%;
+  top: var(--position);
   left: 0;
   right: 0;
   height: var(--height);
   background-color: var(--bg-clr);
   transition: all 200ms;
-  animation: top 1s forwards 1s;
+  animation: top-in var(--anim-config) 1s;
   z-index: 3;
 }
 
@@ -62,6 +64,15 @@
   inset: 0;
   background-color: inherit;
   padding: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+
+  transition: all 1000ms;
+}
+
+.level.play .level__top-dashboard-wrapper {
+  opacity: 1;
+  visibility: visible;
 }
 
 .level__enemy-container {
@@ -72,17 +83,17 @@
 
 .level__footer {
   position: absolute;
-  bottom: -5%;
+  bottom: var(--position);
   left: 0;
   right: 0;
-  height: var(--height);
+  height: calc(var(--height) * 1.25);
   background-color: var(--bg-clr);
   transition: all 200ms;
-  animation: bottom 1s forwards 1s;
+  animation: bottom-in var(--anim-config) 1s;
   z-index: 3;
 }
 
-.level__footer-dialog-window-wrapper {
+.level__footer-dialogue-wrapper {
   position: absolute;
   inset: 0;
   background-color: inherit;
@@ -96,20 +107,51 @@
   height: var(--height);
 }
 
+.level.play .level__footer {
+  bottom: 0;
+  animation: bottom-out 1s forwards;
+}
+
+.level__footer-action-tip {
+  position: absolute;
+  inset: 0;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  opacity: 0;
+  visibility: hidden;
+
+  transition: all 200ms;
+}
+.level.level.play .level__footer-action-tip {
+  opacity: 1;
+  visibility: visible;
+}
+
 @keyframes slide-in-to-right {
   to {
     transform: translateX(0);
   }
 }
 
-@keyframes top {
+@keyframes top-in {
   to {
     top: 0;
   }
 }
-@keyframes bottom {
+@keyframes bottom-in {
   to {
     bottom: 0;
+  }
+}
+@keyframes bottom-out {
+  from {
+    bottom: 0;
+  }
+  to {
+    bottom: var(--position);
   }
 }
 
