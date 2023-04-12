@@ -16,7 +16,7 @@ export const BellaMorello = new Enemy({
   dialogues: [
     {
       enemy:
-        "Mister, {{name}}! Can't say I'm glad to see you. But it's good we have met here. This is my favorite place. Let me ask you, how did you know I was here, Detective?",
+        "Mister {{name}}! Can't say I'm glad to see you. But it's good we have met here. This is my favorite place. Let me ask you, how did you know I was here, Detective?",
       detective:
         "Police officers found a bill from the J&S Bar at the crime scene. It is yellow, with straight logo - two black capitalized letters in the middle. There's only one in the whole town. And he still smells like a woman's perfume."
     },

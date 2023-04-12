@@ -5,6 +5,11 @@
 import { Level } from './src/components/Level.js';
 import { Game } from './src/components/Game.js';
 import { store } from './src/store/store.js';
+import { HomeScreen } from './src/components/HomeScreen.js';
+import { GameMenu } from './src/components/GameMenu.js';
+import { menuPreviews } from './src/constants/menuPreviews.js';
+
+import * as APP_KEYS from './src/constants/appKeys.js';
 
 // characters
 import { TonyArcado } from './src/components/characters/TonyArcado.js';
@@ -13,10 +18,44 @@ import { SalvatoreVitale } from './src/components/characters/SalvatoreVitale.js'
 import { DominicDasher } from './src/components/characters/DominicDasher.js';
 import { AlfredoRossi } from './src/components/characters/AlfredoRossi.js';
 
+import { IntroScene } from './src/components/scenes/IntroScene.js';
+
 // internal
 import { localStorageService } from './src/services/storageService.js';
+import { HYDRATE_STORE } from './src/store/actions.js';
+
+const user = localStorageService.load(APP_KEYS.LOCAL_STORAGE_KEYS.USER);
+const score = localStorageService.load(APP_KEYS.LOCAL_STORAGE_KEYS.SCORE);
+
+store.dispatch({ type: HYDRATE_STORE, payload: { user, score } });
+
+const { characterName } = store.getState().user;
 
 const root = document.querySelector('#root');
+window.addEventListener('gameIsOver', (e) => {
+  root.innerHTML = '';
+  root.appendChild(
+    new HomeScreen({
+      childrenElements: [
+        {
+          tag: GameMenu.tag,
+          props: {
+            items: ['Story', 'Settings', 'Credits', 'Quit'],
+            previews: menuPreviews
+          }
+        }
+      ]
+    })
+  );
+});
+
+const intro = new IntroScene({
+  playerName: characterName,
+  onIntroEnd: () => {
+    root.innerHTML = '';
+    game.start();
+  }
+});
 
 const levels = {
   1: new Level({ enemy: TonyArcado }),
@@ -26,25 +65,29 @@ const levels = {
   5: new Level({ enemy: AlfredoRossi })
 };
 
-const game = new Game({ root, levels, store, localStorageService });
+const game = new Game({ root, levels, store, intro, localStorageService });
 
-game.play();
+game.playIntroScene();
+// root.appendChild(
+//   new IntroScene({
+//     playerName: characterName,
+//     onIntroEnd: () => {
+//       root.innerHTML = '';
+//       game.start();
+//     }
+//   })
+// );
 
-function initApp() {
-  // rootContainer.appendChild(new SignUpForm());
-  // rootContainer.appendChild(
-  //   new HomeScreen({
-  //     childrenElements: [
-  //       {
-  //         tag: GameMenu.tag,
-  //         props: {
-  //           items: ['Story', 'Settings', 'Credits', 'Quit'],
-  //           previews: menuPreviews
-  //         }
-  //       }
-  //     ]
-  //   })
-  // );
-}
-
-initApp();
+// root.appendChild(
+//   new HomeScreen({
+//     childrenElements: [
+//       {
+//         tag: GameMenu.tag,
+//         props: {
+//           items: ['Story', 'Settings', 'Credits', 'Quit'],
+//           previews: menuPreviews
+//         }
+//       }
+//     ]
+//   })
+// );

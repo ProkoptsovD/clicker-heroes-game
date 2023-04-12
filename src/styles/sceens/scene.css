@@ -1,0 +1,56 @@
+.scene {
+  --height: 140px;
+  --position: -30%;
+  --bg-clr: #242424;
+
+  position: relative;
+  height: 100dvh;
+  overflow: hidden;
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: var(--bg-clr);
+}
+
+.scene__bg-container {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 50% 50%;
+  height: 100%;
+}
+
+.scene__vignette {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--height);
+  background-color: var(--bg-clr);
+}
+
+.scene__vignette--top {
+  top: var(--position);
+}
+.scene__vignette--top:not(.no-animation) {
+  animation: slide-in-top 1s forwards 500ms;
+}
+
+.scene__vignette--bottom {
+  bottom: var(--position);
+}
+.scene__vignette--bottom:not(.no-animation) {
+  animation: slide-in-bottom 1s forwards 500ms;
+}
+
+.scene__vignette.no-animation {
+  --position: 0;
+}
+
+@keyframes slide-in-top {
+  to {
+    top: 0;
+  }
+}
+@keyframes slide-in-bottom {
+  to {
+    bottom: 0;
+  }
+}

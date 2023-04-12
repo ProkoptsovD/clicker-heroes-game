@@ -15,5 +15,8 @@
 /* PANELS */
 @import './panels/index.css';
 
+/* SCENES */
+@import './sceens/index.css';
+
 /* GRADIENTS */
 @import './gradients.css';

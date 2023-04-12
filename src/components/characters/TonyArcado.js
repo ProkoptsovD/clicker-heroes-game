@@ -10,7 +10,7 @@ export const TonyArcado = new Enemy({
   phrases: { intro: 'Come on! What are you wiating for???', isArrested: 'Bloody hell!!!' },
   dialogues: [
     {
-      enemy: "Well, well, well... Look who's here! {{name}} in a flesh",
+      enemy: "Well, well, well... Look who's here! Officer {{name}} in a flesh.",
       detective:
         "Give up! Don't make it worse. Your fellows left you. Help yourself to get your prison time off."
     },

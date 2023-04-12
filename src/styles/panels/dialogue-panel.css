@@ -1,0 +1,105 @@
+.dialogue-panel {
+  --anim-speed: 700ms;
+  --delay: 2s;
+
+  padding: 0.5rem;
+}
+
+.dialogue-panel__wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.topDown {
+  flex-direction: column;
+}
+
+.downTop {
+  flex-direction: column-reverse;
+}
+
+.dialogue-panel__speaker-icon {
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.dialogue-panel__speaker {
+  display: flex;
+  align-items: flex-start;
+  /* flex-grow: 1; */
+  color: #ffffff;
+  font-size: 0.85rem;
+  gap: 0.5rem;
+  width: 70%;
+  transition: transform 100ms;
+}
+
+.dialogue-panel__speaker--one {
+  justify-content: flex-start;
+  transform: translateX(-100%);
+}
+
+.dialogue-panel__wrapper.topDown .dialogue-panel__speaker--one {
+  animation: dialogue var(--anim-speed) var(--delay) linear forwards;
+}
+.dialogue-panel__wrapper.downTop .dialogue-panel__speaker--one {
+  animation: dialogue var(--anim-speed) linear calc((var(--anim-speed) / 1.5) + var(--delay))
+    forwards;
+}
+
+.dialogue-panel .dialogue-panel__speaker--two {
+  justify-content: flex-end;
+  margin-left: auto;
+  transform: translateX(100%);
+}
+
+.dialogue-panel__wrapper.topDown .dialogue-panel__speaker--two {
+  animation: dialogue var(--anim-speed) linear calc((var(--anim-speed) / 1.5) + var(--delay))
+    forwards;
+}
+.dialogue-panel__wrapper.downTop .dialogue-panel__speaker--two {
+  animation: dialogue var(--anim-speed) var(--delay) linear forwards;
+}
+
+@keyframes dialogue {
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes wrapper-fade-in {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.dialogue-panel__button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 200ms;
+  animation: wrapper-fade-in var(--anim-speed) linear
+    calc((var(--anim-speed) * 1.75) + var(--delay)) forwards;
+}
+
+.dialogue-panel__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: inherit;
+  color: #ffffff;
+  padding: 0.25rem 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #545454;
+  transition: filter 200ms;
+}
+
+.dialogue-panel__button:hover {
+  cursor: pointer;
+  filter: brightness(2.5);
+}

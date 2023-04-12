@@ -4,23 +4,34 @@ import { Confetti } from '../lib/Confetti.js';
 export class Modal extends WebComponent {
   static tag = 'app-modal';
 
-  constructor({ withConfetti = false, bodyContent, onButtonClick, ...config } = {}) {
+  constructor({
+    title = 'Congraulations!',
+    text = 'You have detained extremely dangerous criminal!',
+    buttonText = 'Next level',
+    withConfetti = false,
+    bodyContent,
+    onButtonClick,
+    ...config
+  } = {}) {
     super({ addSubscription: false, ...config });
 
+    this.title = title;
+    this.text = text;
+    this.buttonText = buttonText;
     this.withConfetti = withConfetti;
     this.bodyContent = bodyContent;
     this.onButtonClick = () => onButtonClick();
 
     this.defaultContentTemplate = `
         <div class="modal-content-container">
-            <h3 class="modal__title">Congraulations!</h3>
+            <h3 class="modal__title">${this.title}</h3>
             <p class="modal__text">
-                You have detained extremely dangerous criminal!
+                ${this.text}
             </p>
             <p class="modal__text">
                 Thank you for your service, detective ${this.store.getState().user.characterName}.
             </p>
-            <button type="button" class="modal__button">Next level</button>
+            <button type="button" class="modal__button">${this.buttonText}</button>
         </div>
     `;
   }
@@ -33,13 +44,13 @@ export class Modal extends WebComponent {
     if (this.withConfetti) this.confetti = new Confetti({ containerRef: this.backdropRef });
 
     if (this.buttonRef) {
-      this.backdropRef.addEventListener('click', this.onButtonClick);
+      this.buttonRef.addEventListener('click', this.onButtonClick);
     }
   }
 
   disconnectedCallback() {
     if (this.buttonRef) {
-      this.backdropRef.removeEventListener('click', this.onButtonClick);
+      this.buttonRef.removeEventListener('click', this.onButtonClick);
     }
   }
 

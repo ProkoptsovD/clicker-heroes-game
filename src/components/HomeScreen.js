@@ -1,6 +1,7 @@
 import { WebComponent } from '../lib/WebComponent.js';
 import { Logo } from './Logo.js';
 
+/** app home screen with navigatin */
 export class HomeScreen extends WebComponent {
   static tag = 'home-screen';
   /**
@@ -15,7 +16,6 @@ export class HomeScreen extends WebComponent {
      * so here we cancel the auto subscription which is implelemted on parent class
      */
     super({ addSubscription: false, ...restConfig });
-
     this.childrenElements = childrenElements;
   }
 

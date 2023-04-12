@@ -1,6 +1,7 @@
 // web components
-import { DashboardPanel } from './panles/DashboardPanel.js';
 import { WebComponent } from '../lib/WebComponent.js';
+import { DashboardPanel } from './panles/DashboardPanel.js';
+import { DialoguePanel } from './panles/DialoguePanel.js';
 
 // classes, not web component
 import { Enemy } from '../lib/Enemy.js';
@@ -21,16 +22,23 @@ export class Level extends WebComponent {
     super({ addSubscription: false });
 
     this.enemy = enemy;
-    this.dialoguePanel = dialoguePanel;
+    this.dialoguePanel = new DialoguePanel({
+      firstSpeakerIcon: this.enemy.appearence,
+      secondSpeakerIcon: this.enemy.appearence,
+      dialogue: this.enemy.dialogues,
+      dialogueOrder: this.enemy.dialogueOrder,
+      dialogueKeys: { first: 'enemy', second: 'detective' },
+      onDialogueEnd: () => this.playLevel()
+    });
     this.controlsPanel = controlsPanel;
     this.event = new CustomEvent('levelpassed', { bubbles: true, detail: 2500 });
 
     this.dashboard = dashboard ?? new DashboardPanel();
-
-    this.init();
   }
 
-  init() {
+  enableEnemyClick() {
+    /** enables showing damage on click */
+    this.enemy.clickEnabled = true;
     /**
      * provide enemy with onClick func containing outer logic
      * an attempt to implement SOLID =)
@@ -61,6 +69,7 @@ export class Level extends WebComponent {
 
     /** add enemy to level map */
     this.enemy.addToDOM(this.enemyContainerRef);
+    this.dialogueContainerRef.appendChild(this.dialoguePanel);
 
     /**
      * setting to store initial stamina amount according to enemy
@@ -70,8 +79,15 @@ export class Level extends WebComponent {
   }
 
   getRefs() {
-    this.enemyContainerRef = this.querySelector('.level__enemy-container');
     this.levelContainerRef = this.querySelector('.level');
+    this.enemyContainerRef = this.querySelector('.level__enemy-container');
+    this.dialogueContainerRef = this.querySelector('[data-dialogue-panel]');
+  }
+
+  /** start playing level on dialogues end */
+  playLevel() {
+    this.levelContainerRef.classList.add('play');
+    this.enableEnemyClick();
   }
 
   /** dispatches event that tells level is passed */
@@ -111,13 +127,11 @@ export class Level extends WebComponent {
     // config dashboard
     const props = this._mapDashboardProps();
     const dashboard = this._transformIntoTag(props);
-    // const dialoguePanel = this._transformIntoTag(this.dialoguePanel);
-    // const controlsPanel = this._transformIntoTag(this.controlsPanel);
 
     this.innerHTML = `
-        <div class="level">
+        <section class="level">
             <header class="level__header">
-                <div data- class="level__top-dashboard-wrapper">
+                <div data-dashboard-panel class="level__top-dashboard-wrapper hidden">
                     ${dashboard}
                 </div>
             </header>
@@ -127,15 +141,10 @@ export class Level extends WebComponent {
             </div>
             
             <footer class="level__footer">
-                <div class="level__footer-dialog-window-wrapper">
-        
-                </div>
-
-                <div class="level__footer-controls-panel-wrapper">
-                    
-                </div>
+                <div data-dialogue-panel class="level__footer-dialogue-wrapper"></div>
+                <p class="level__footer-action-tip">Click on the ${this.enemy.name} to arrest</p>
             </footer>
-        </div>
+        </section>
     `;
   }
 }

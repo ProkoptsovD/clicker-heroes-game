@@ -21,7 +21,7 @@ export class Enemy {
    *    isArrested: string;
    *  };
    * dialogues: Array<{ enemy: string; detective: string }>
-   * dialogOrder: 'enemyDetective' | 'detectiveEnemy';
+   * dialogueOrder: 'topDown' | 'downTop';
    * onClick: () => void;
    * dashboardTheme: string
    * }} config
@@ -37,7 +37,7 @@ export class Enemy {
     className = 'enemy',
     phrases = { intro: 'Hi', isArrested: "I'm arrested" },
     dialogues = [],
-    dialogOrder = 'enemyDetective',
+    dialogueOrder = 'topDown',
     dashboardTheme,
     onClick = () => console.log(`${this.name} is hit`)
   } = {}) {
@@ -51,7 +51,7 @@ export class Enemy {
     this.appearence = appearence;
     this.className = className;
     this.dialogues = dialogues;
-    this.dialogOrder = dialogOrder;
+    this.dialogueOrder = dialogueOrder;
     this.dashboardTheme = dashboardTheme;
     this.speechFrames = {
       intro: '/src/assets/icons/speech/speech_frame_05.svg',
@@ -59,6 +59,7 @@ export class Enemy {
     };
     this.killDamageIn = 1100;
     this.onClick = onClick;
+    this.clickEnabled = false;
 
     this.create();
   }
@@ -81,7 +82,7 @@ export class Enemy {
     enemy.setAttribute('draggable', 'false');
 
     enemy.onclick = () => {
-      this.showDamage();
+      if (this.clickEnabled) this.showDamage();
       this.onClick();
     };
 
