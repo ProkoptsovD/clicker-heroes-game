@@ -1,25 +1,25 @@
 /* variables */
-@import './variables.css';
+@import '/styles/variables.css';
 
 /* GLOBAL */
-@import './reset-default.css';
-@import './global.css';
-@import './utilities.css';
+@import '/styles/reset-default.css';
+@import '/styles/global.css';
+@import '/styles/utilities.css';
 
 /* COMPONENTS */
-@import './components/index.css';
+@import '/styles/components/index.css';
 
 /* CHARACTERS */
-@import './characters/index.css';
+@import '/styles/characters/index.css';
 
 /* PANELS */
-@import './panels/index.css';
+@import '/styles/panels/index.css';
 
 /* SCENES */
-@import './scenes/index.css';
+@import '/styles/scenes/index.css';
 
 /* SCREENS */
-@import './screens/index.css';
+@import '/styles/screens/index.css';
 
 /* GRADIENTS */
-@import './gradients.css';
+@import '/styles/gradients.css';

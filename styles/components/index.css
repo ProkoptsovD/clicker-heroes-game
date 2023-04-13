@@ -1,6 +1,6 @@
-@import './signUpForm.css';
-@import './logo.css';
-@import './enemy.css';
-@import './level.css';
-@import './confetti.css';
-@import './modal.css';
+@import '/styles/signUpForm.css';
+@import 'styles/logo.css';
+@import 'styles/enemy.css';
+@import 'styles/level.css';
+@import 'styles/confetti.css';
+@import 'styles/modal.css';

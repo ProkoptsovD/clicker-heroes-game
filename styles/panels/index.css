@@ -1,3 +1,3 @@
-@import './dashboard-panel.css';
-@import './dialogue-panel.css';
-@import './gameMenu.css';
+@import '/styles/dashboard-panel.css';
+@import '/styles/dialogue-panel.css';
+@import '/styles/gameMenu.css';
