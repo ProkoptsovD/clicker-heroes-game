@@ -2,7 +2,7 @@ import { WebComponent } from '../lib/WebComponent.js';
 import { Logo } from './Logo.js';
 
 // services
-import { validationService } from '../services/ValidationService.js';
+import { validationService } from '../services/validationService.js';
 
 /**
  * Form to register user
