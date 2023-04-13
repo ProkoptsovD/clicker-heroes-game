@@ -1,6 +1,6 @@
-@import '/styles/signUpForm.css';
-@import 'styles/logo.css';
-@import 'styles/enemy.css';
-@import 'styles/level.css';
-@import 'styles/confetti.css';
-@import 'styles/modal.css';
+@import '/clicker-heroes-game/styles/signUpForm.css';
+@import '/clicker-heroes-gamestyles/logo.css';
+@import '/clicker-heroes-gamestyles/enemy.css';
+@import '/clicker-heroes-gamestyles/level.css';
+@import '/clicker-heroes-gamestyles/confetti.css';
+@import '/clicker-heroes-gamestyles/modal.css';
