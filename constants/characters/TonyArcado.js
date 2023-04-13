@@ -1,15 +1,11 @@
-const appearence = require('../../assets/icons/characters/gang_character_01_bank.svg');
-const location = require('../../assets/icons/locations/bank.svg');
-const miniIcon = require('../../assets/images/character-icons/gang_character_icon_01.png');
-
 export const TonyArcado = {
   name: 'Tony Arcado',
   nickname: 'The CockRoach',
   stamina: 5,
   level: 1,
-  appearence,
-  location,
-  miniIcon,
+  appearence: '/clicker-heroes-game/assets/icons/characters/gang_character_01_bank.svg',
+  location: '/clicker-heroes-game/assets/icons/locations/bank.svg',
+  miniIcon: '/clicker-heroes-game/assets/images/character-icons/gang_character_icon_01.png',
   phrases: { intro: 'Come on! What are you wiating for???', isArrested: 'Bloody hell!!!' },
   dialogues: [
     {
