@@ -1,25 +1,25 @@
 /* variables */
-@import '/styles/variables.css';
+@import '/clicker-heroes-game/styles/variables.css';
 
 /* GLOBAL */
-@import '/styles/reset-default.css';
-@import '/styles/global.css';
-@import '/styles/utilities.css';
+@import '/clicker-heroes-game/styles/reset-default.css';
+@import '/clicker-heroes-game/styles/global.css';
+@import '/clicker-heroes-game/styles/utilities.css';
 
 /* COMPONENTS */
-@import '/styles/components/index.css';
+@import '/clicker-heroes-game/styles/components/index.css';
 
 /* CHARACTERS */
-@import '/styles/characters/index.css';
+@import '/clicker-heroes-game/styles/characters/index.css';
 
 /* PANELS */
-@import '/styles/panels/index.css';
+@import '/clicker-heroes-game/styles/panels/index.css';
 
 /* SCENES */
-@import '/styles/scenes/index.css';
+@import '/clicker-heroes-game/styles/scenes/index.css';
 
 /* SCREENS */
-@import '/styles/screens/index.css';
+@import '/clicker-heroes-game/styles/screens/index.css';
 
 /* GRADIENTS */
-@import '/styles/gradients.css';
+@import '/clicker-heroes-game/styles/gradients.css';
