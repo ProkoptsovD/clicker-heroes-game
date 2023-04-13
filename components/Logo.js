@@ -18,8 +18,8 @@ export class Logo extends WebComponent {
   render() {
     this.innerHTML = `
         <div class="logo__container ${this.class}">
-            <img class="logo" src="/src/assets/images/logo.png" alt="logo" />
-            <img class="logo__edition" src="/src/assets/images/edition.png" alt="edition logo" />
+            <img class="logo" src="/assets/images/logo.png" alt="logo" />
+            <img class="logo__edition" src="/assets/images/edition.png" alt="edition logo" />
         </div>
     `;
   }
