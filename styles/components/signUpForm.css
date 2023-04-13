@@ -1,0 +1,197 @@
+.signup-form__outer-wrapper {
+  --gradient-clr-1: #7c91b0;
+  --gradient-clr-2: #e25e5e;
+  --padding-left: 2rem;
+  --padding-right: 1rem;
+  --input-state: var(--clr-neutral);
+  --btn-icon: url('../../assets/icons/form/cross.svg');
+  --bg-clr: #ffffff;
+
+  margin: 0 auto;
+  max-width: 400px;
+  width: 100%;
+
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: var(--bg-clr);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.signup-form__title {
+  font-size: 1.275rem;
+  font-weight: 600;
+  color: #333333;
+
+  margin-bottom: 2rem;
+}
+
+.signup-form {
+  width: 100%;
+  background-color: inherit;
+}
+
+/*  FORM FIELD */
+.signup-form__field {
+  position: relative;
+  display: block;
+  height: 3.5rem;
+  background-color: inherit;
+  isolation: isolate;
+}
+
+.signup-form__field:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+/* MOVING PLACEHOLDER */
+.signup-form__field-placeholder {
+  position: absolute;
+  top: 50%;
+  left: var(--padding-left);
+  padding-inline: 0.25rem;
+
+  color: #33333380;
+  background-color: inherit;
+  transform: translateY(-50%);
+  transition: transform 200ms;
+
+  z-index: 2;
+}
+
+.signup-form__field-placeholder:hover {
+  cursor: text;
+}
+
+.signup-form input:focus-within + .signup-form__field-placeholder {
+  transform: translateY(-205%);
+}
+
+.signup-form input:not(:focus-within):not(:placeholder-shown) + .signup-form__field-placeholder {
+  transform: translateY(-205%);
+}
+
+/* FIELD ICON */
+.signup-form__field-icon {
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--input-state);
+
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.signup-form__field-icon--user {
+  left: 0.5rem;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.signup-form__field-icon--email {
+  left: 0.4rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* CLEAR INPUT BUTTON */
+.signup-form__field-clear-btn {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: var(--padding-right);
+  width: 1rem;
+  height: 1rem;
+
+  border: 1px solid var(--input-state);
+  border-radius: 50%;
+  background-color: inherit;
+  background-image: var(--btn-icon);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  transform: translateY(-50%);
+
+  background-color: var(--input-state);
+  mask-image: var(--btn-icon);
+}
+
+.signup-form__field-clear-btn:hover {
+  cursor: pointer;
+}
+
+/* when filed has class show clear all button */
+.signup-form__field.field-invalid
+  input:not(:placeholder-shown)
+  + .signup-form__field-placeholder
+  + .signup-form__field-icon
+  + .signup-form__field-clear-btn,
+.signup-form__field.field-valid
+  input:not(:placeholder-shown)
+  + .signup-form__field-placeholder
+  + .signup-form__field-icon
+  + .signup-form__field-clear-btn {
+  display: block;
+}
+
+/* INPUT */
+.signup-form input {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem var(--padding-right) 0.5rem calc(var(--padding-left) + 0.125rem);
+  border: 1px solid var(--input-state);
+  border-radius: 8px;
+  outline: none;
+}
+
+.signup-form input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--bg-clr) inset;
+}
+
+.signup-form input:autofill {
+  box-shadow: 0 0 0px 1000px var(--bg-clr) inset;
+}
+
+/* VALIDIDATION */
+.field-valid {
+  --input-state: var(--clr-valid);
+  --btn-icon: url('../../assets/icons/form/check.svg');
+}
+.field-invalid {
+  --input-state: var(--clr-invalid);
+  --btn-icon: url('../../assets/icons/form/cross.svg');
+}
+
+/* SUBMIT BUTTON */
+.signup-form__submit-button {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  background-image: linear-gradient(90deg, var(--gradient-clr-1), var(--gradient-clr-2));
+  color: #efefef;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  border: none;
+
+  transition: filter 150ms;
+}
+
+.signup-form__submit-button:hover {
+  cursor: pointer;
+  filter: contrast(2.5);
+}
+
+/* ERROR */
+
+.signup-form__field-error {
+  position: absolute;
+  bottom: -1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--clr-invalid);
+  left: calc(var(--padding-left) / 2);
+}

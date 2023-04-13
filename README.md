@@ -6,10 +6,10 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="/src/assets/images/logo.png" alt="Logo" width="400" height="auto">
+    <img src="/clicker-heroes-game/assets/images/logo.png" alt="Logo" width="400" height="auto">
   </a>
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="/src/assets/images/edition.png" alt="Logo" width="200" height="auto">
+    <img src="/clicker-heroes-game/assets/images/edition.png" alt="Logo" width="200" height="auto">
   </a>
 
   <p align="center">
