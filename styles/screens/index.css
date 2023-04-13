@@ -1,2 +1,2 @@
-@import '/clicker-heroes-game/styles/homeScreen.css';
-@import '/clicker-heroes-game/styles/creditsScreen.css';
+@import './homeScreen.css';
+@import './creditsScreen.css';
