@@ -1,9 +1,7 @@
-import { Enemy } from '../../lib/Enemy.js';
-
-export const SalvatoreVitale = new Enemy({
+export const SalvatoreVitale = {
   name: 'Salvatore Vitale',
   nickname: 'Good-looking Sal',
-  stamina: 45,
+  stamina: 5,
   level: 3,
   className: 'salvatoreVitale',
   appearence: '/src/assets/icons/characters/gang_character_03_parking.svg',
@@ -28,4 +26,4 @@ export const SalvatoreVitale = new Enemy({
     }
   ],
   dashboardTheme: 'parking'
-});
+};

@@ -33,31 +33,15 @@ export class App {
   }
 
   init() {
+    this.unsubsribe();
     this.#hydrateStore();
-
-    const playerName = store.getState()?.user?.characterName;
 
     // instanciate necessary classes
     this.homeScreen = new HomeScreen();
-    this.signUpForm = new SignUpForm({ onFormSubmit: this.#render.bind(this, this.homeScreen) });
-    this.intro = new IntroScene({ playerName });
-    this.game = new Game({
-      root: this.root,
-      intro: this.intro,
-      levels,
-      store,
-      localStorageService
-    });
+    this.signUpForm = new SignUpForm({ onFormSubmit: this.#handleFormSubmit.bind(this) });
     this.creditsScreen = new CreditsScreen({
       onBacklinkClick: this.#render.bind(this, this.homeScreen)
     });
-
-    /** setting callback for intro end logic */
-    this.intro.onIntroEnd = () => {
-      this.#clearRoot();
-      // if intro is ended - start playing game
-      this.game.start();
-    };
 
     this.#initSubscriptions();
   }
@@ -89,11 +73,39 @@ export class App {
     window.addEventListener('switch-tab', this.handleAppNaviation);
   }
 
+  #createNewGame() {
+    if (this.intro && this.game) {
+      this.intro = null;
+      this.game = null;
+    }
+    const playerName = store.getState()?.user?.characterName;
+    this.intro = new IntroScene({ playerName });
+    this.game = new Game({
+      root: this.root,
+      intro: this.intro,
+      levels,
+      store,
+      localStorageService
+    });
+    /** setting callback for intro end logic */
+    this.intro.onIntroEnd = () => {
+      this.#clearRoot();
+      // if intro is ended - start playing game
+      this.game.start();
+    };
+  }
+
+  #handleFormSubmit(user) {
+    localStorageService.save(APP_KEYS.LOCAL_STORAGE_KEYS.USER, user);
+    this.#hydrateStore();
+    this.renderHomeScreen();
+  }
+
   #handleAppLoad() {
     const { user } = store.getState();
 
     if (!user) {
-      this.this.renderSignUpForm();
+      this.renderSignUpForm();
     } else {
       this.renderHomeScreen();
     }
@@ -113,14 +125,17 @@ export class App {
     switch (detail) {
       case MENU_TABS.STORY:
         this.#clearRoot();
+        this.#hydrateStore();
+        this.#createNewGame();
         this.game.playIntroScene();
         break;
       case MENU_TABS.CREDITS:
         this.#render(this.creditsScreen);
         break;
       case MENU_TABS.QUIT:
-        store.dispatch({ type: RESET });
         localStorageService.clear();
+        store.dispatch({ type: RESET });
+        console.log(store.getState());
         this.renderSignUpForm();
         break;
       case MENU_TABS.SCORE:

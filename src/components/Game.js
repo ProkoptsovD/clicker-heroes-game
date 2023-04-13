@@ -1,7 +1,8 @@
-import { SET_TOTAL_SCORE } from '../store/actions.js';
+import { RESET_LEVEL, SET_TOTAL_SCORE } from '../store/actions.js';
 import { Level } from './Level.js';
 import { Modal } from './Modal.js';
 import * as APP_KEYS from '../constants/appKeys.js';
+import { Enemy } from '../lib/Enemy.js';
 
 /**
  * game class. Once instanciatied - game begins
@@ -64,8 +65,7 @@ export class Game {
        * */
       setTimeout(() => {
         const { level } = this.store.getState();
-        console.log('level -->', level);
-        console.log('levelsQuantity -->', this.levelsQuantity);
+
         if (level === this.levelsQuantity + 1) {
           this.modal = new Modal({
             onButtonClick: () => this.end(),
@@ -85,18 +85,21 @@ export class Game {
 
   /** starts game from begin */
   start() {
-    this.root.appendChild(this.levels[this.startLevel]);
+    const level = new Level({ enemy: new Enemy(this.levels[this.startLevel]) });
+    this.root.appendChild(level);
   }
 
   /** pushes player to next game level */
   nextLevel() {
     const { level } = this.store.getState();
     this.root.innerHTML = '';
-    this.root.appendChild(this.levels[level]);
+    const nextLevel = new Level({ enemy: new Enemy(this.levels[level]) });
+    this.root.appendChild(nextLevel);
   }
 
   /** ends game */
   end() {
+    this.store.dispatch({ type: RESET_LEVEL });
     this.root.dispatchEvent(this.endGameEvent);
   }
 

@@ -1,9 +1,7 @@
-import { Enemy } from '../../lib/Enemy.js';
-
-export const BellaMorello = new Enemy({
+export const BellaMorello = {
   name: 'Bella Morelo',
   nickname: 'Lovely B',
-  stamina: 35,
+  stamina: 5,
   level: 2,
   size: { width: 'auto', height: '360px' },
   className: 'bellaMorelo',
@@ -28,4 +26,4 @@ export const BellaMorello = new Enemy({
     }
   ],
   dashboardTheme: 'club'
-});
+};

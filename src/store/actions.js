@@ -6,3 +6,4 @@ export const NEXT_LEVEL = 'NEXT_LEVEL';
 export const SET_TOTAL_SCORE = 'SET_TOTAL_SCORE';
 export const HYDRATE_STORE = 'HYDRATE_STORE';
 export const RESET = 'RESET';
+export const RESET_LEVEL = 'RESET_LEVEL';

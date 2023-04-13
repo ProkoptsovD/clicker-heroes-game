@@ -1,9 +1,7 @@
-import { Enemy } from '../../lib/Enemy.js';
-
-export const AlfredoRossi = new Enemy({
+export const AlfredoRossi = {
   name: 'Alfredo Rossi',
   nickname: 'Big Al',
-  stamina: 75,
+  stamina: 5,
   level: 5,
   className: 'alfredoRossi',
   appearence: '/src/assets/icons/characters/gang_character_05_bar.svg',
@@ -41,4 +39,4 @@ export const AlfredoRossi = new Enemy({
     }
   ],
   dashboardTheme: 'bar'
-});
+};

@@ -7,7 +7,8 @@ import {
   SET_STAMINA,
   SET_TOTAL_SCORE,
   HYDRATE_STORE,
-  RESET
+  RESET,
+  RESET_LEVEL
 } from './actions.js';
 
 /** state */
@@ -64,6 +65,11 @@ export function rootReducer(state, action) {
     case RESET:
       return {
         ...initialState
+      };
+    case RESET_LEVEL:
+      return {
+        ...state,
+        level: initialState.level
       };
     default:
       return state;
