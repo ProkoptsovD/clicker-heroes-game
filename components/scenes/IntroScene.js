@@ -1,4 +1,5 @@
 import { WebComponent } from '../../lib/WebComponent.js';
+import { BASE_URL } from '../../constants/config.js';
 
 /** intro game scene */
 export class IntroScene extends WebComponent {
@@ -8,14 +9,14 @@ export class IntroScene extends WebComponent {
     super({ addSubscription: false, ...config });
 
     this.tag = IntroScene.tag;
-    this.cheifIcon = '/assets/images/character-icons/police_character_icon_01_chief.png';
-    this.heroIcon = '/assets/images/character-icons/main_hero_icon_01.png';
+    this.cheifIcon = BASE_URL + '/assets/images/character-icons/police_character_icon_01_chief.png';
+    this.heroIcon = BASE_URL + '/assets/images/character-icons/main_hero_icon_01.png';
     this.playerName = playerName;
     this.frames = {
       1: `
         <section class="scene">
             <div class="scene__vignette scene__vignette--top no-animation"></div>
-            <div class="scene__bg-container intro-frame-1" style="background-image: url('/assets/icons/locations/main_hero_01_room.svg')"></div>
+            <div class="scene__bg-container intro-frame-1" style="background-image: url('${BASE_URL}/assets/icons/locations/main_hero_01_room.svg')"></div>
             <div class="scene__vignette scene__vignette--bottom no-animation">
                 <div class="intro__character-speech delay-1s">
                     <div class="intro__character-icon">
@@ -35,9 +36,9 @@ export class IntroScene extends WebComponent {
                 <div class="scene__vignette scene__vignette--top">
                     <button data-intro-button class="intro__to-crime-scene-button" type="button">Go to a crime scene</button>
                 </div>
-                <div class="scene__bg-container" style="background-image: url('/assets/icons/locations/police_department.svg')"></div>
+                <div class="scene__bg-container" style="background-image: url('${BASE_URL}/assets/icons/locations/police_department.svg')"></div>
                 <div class="scene__vignette scene__vignette--bottom">
-                    <img class="intro__character" src="/assets/icons/characters/police_character_01_chief.svg" alt="game charachter"/>
+                    <img class="intro__character" src="${BASE_URL}/assets/icons/characters/police_character_01_chief.svg" alt="game charachter"/>
                     <div class="intro__character-speech">
                         <div class="intro__character-icon">
                             <img class="intro__character-icon-image" src="${this.cheifIcon}" alt="game police chief icon"/>

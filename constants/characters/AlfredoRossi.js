@@ -1,12 +1,14 @@
+import { BASE_URL } from '../config.js';
+
 export const AlfredoRossi = {
   name: 'Alfredo Rossi',
   nickname: 'Big Al',
   stamina: 5,
   level: 5,
   className: 'alfredoRossi',
-  appearence: '/assets/icons/characters/gang_character_05_bar.svg',
-  location: '/assets/icons/locations/bar.svg',
-  miniIcon: '/assets/images/character-icons/gang_character_icon_05.png',
+  appearence: BASE_URL + '/assets/icons/characters/gang_character_05_bar.svg',
+  location: BASE_URL + '/assets/icons/locations/bar.svg',
+  miniIcon: BASE_URL + '/assets/images/character-icons/gang_character_icon_05.png',
   phrases: {
     intro: 'You made a silly choice!',
     isArrested: "I'll get out of jail and kill you..."

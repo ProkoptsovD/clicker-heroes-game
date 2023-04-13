@@ -1,12 +1,14 @@
+import { BASE_URL } from '../config.js';
+
 export const SalvatoreVitale = {
   name: 'Salvatore Vitale',
   nickname: 'Good-looking Sal',
   stamina: 5,
   level: 3,
   className: 'salvatoreVitale',
-  appearence: '/assets/icons/characters/gang_character_03_parking.svg',
-  location: '/assets/icons/locations/undeground_parking.svg',
-  miniIcon: '/assets/images/character-icons/gang_character_icon_03.png',
+  appearence: BASE_URL + '/assets/icons/characters/gang_character_03_parking.svg',
+  location: BASE_URL + '/assets/icons/locations/undeground_parking.svg',
+  miniIcon: BASE_URL + '/assets/images/character-icons/gang_character_icon_03.png',
   phrases: { intro: 'What? Did you shit your pants?', isArrested: 'Oh... poor me...' },
   dialogues: [
     {

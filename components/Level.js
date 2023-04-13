@@ -5,6 +5,7 @@ import { DialoguePanel } from './panels/DialoguePanel.js';
 
 // classes, not web component
 import { Enemy } from '../lib/Enemy.js';
+import { BASE_URL } from '../constants/config.js';
 
 // actions
 import { DECREMENT_STAMINA, NEXT_LEVEL, SET_STAMINA } from '../store/actions.js';
@@ -111,7 +112,7 @@ export class Level extends WebComponent {
 
     return new DialoguePanel({
       firstSpeakerIcon: this.enemy.miniIcon,
-      secondSpeakerIcon: '/clicker-heroes-game/assets/images/character-icons/main_hero_icon_01.png',
+      secondSpeakerIcon: BASE_URL + '/assets/images/character-icons/main_hero_icon_01.png',
       dialogue: this.enemy.dialogues,
       dialogueOrder: this.enemy.dialogueOrder,
       dialogueKeys: { first: 'enemy', second: 'detective' },
@@ -124,7 +125,7 @@ export class Level extends WebComponent {
   playArrestedAnimation() {
     const img = document.createElement('img');
 
-    img.src = '/assets/images/arrested.png';
+    img.src = BASE_URL + '/assets/images/arrested.png';
     img.alt = 'arrested icon';
     img.classList.add('arrested');
 

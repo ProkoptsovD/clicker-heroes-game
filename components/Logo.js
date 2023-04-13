@@ -1,5 +1,7 @@
 import { WebComponent } from '../lib/WebComponent.js';
+import { BASE_URL } from '../constants/config.js';
 
+/** game logo */
 export class Logo extends WebComponent {
   static tag = 'app-logo';
 
@@ -18,8 +20,8 @@ export class Logo extends WebComponent {
   render() {
     this.innerHTML = `
         <div class="logo__container ${this.class}">
-            <img class="logo" src="/clicker-heroes-game/assets/images/logo.png" alt="logo" />
-            <img class="logo__edition" src="/clicker-heroes-game/assets/images/edition.png" alt="edition logo" />
+            <img class="logo" src="${BASE_URL}/assets/images/logo.png" alt="logo" />
+            <img class="logo__edition" src="${BASE_URL}/assets/images/edition.png" alt="edition logo" />
         </div>
     `;
   }

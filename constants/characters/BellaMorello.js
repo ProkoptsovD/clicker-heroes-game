@@ -1,3 +1,5 @@
+import { BASE_URL } from '../config.js';
+
 export const BellaMorello = {
   name: 'Bella Morelo',
   nickname: 'Lovely B',
@@ -5,9 +7,9 @@ export const BellaMorello = {
   level: 2,
   size: { width: 'auto', height: '360px' },
   className: 'bellaMorelo',
-  appearence: '/assets/icons/characters/gang_character_02_club.svg',
-  location: '/assets/icons/locations/club.svg',
-  miniIcon: '/assets/images/character-icons/gang_character_icon_02.png',
+  appearence: BASE_URL + '/assets/icons/characters/gang_character_02_club.svg',
+  location: BASE_URL + '/assets/icons/locations/club.svg',
+  miniIcon: BASE_URL + '/assets/images/character-icons/gang_character_icon_02.png',
   phrases: {
     intro: 'Shall we start, darling?',
     isArrested: 'I tried so hard and got so far, but in the end...'

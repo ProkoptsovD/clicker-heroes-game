@@ -1,11 +1,13 @@
+import { BASE_URL } from '../config.js';
+
 export const TonyArcado = {
   name: 'Tony Arcado',
   nickname: 'The CockRoach',
   stamina: 5,
   level: 1,
-  appearence: '/assets/icons/characters/gang_character_01_bank.svg',
-  location: '/assets/icons/locations/bank.svg',
-  miniIcon: '/assets/images/character-icons/gang_character_icon_01.png',
+  appearence: BASE_URL + '/assets/icons/characters/gang_character_01_bank.svg',
+  location: BASE_URL + '/assets/icons/locations/bank.svg',
+  miniIcon: BASE_URL + '/assets/images/character-icons/gang_character_icon_01.png',
   phrases: { intro: 'Come on! What are you wiating for???', isArrested: 'Bloody hell!!!' },
   dialogues: [
     {

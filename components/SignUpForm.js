@@ -3,6 +3,7 @@ import { Logo } from './Logo.js';
 
 // services
 import { validationService } from '../services/validationService.js';
+import { BASE_URL } from '../constants/config.js';
 
 /**
  * Form to register user
@@ -192,7 +193,7 @@ export class SignUpForm extends WebComponent {
                         />
                         <span class="signup-form__field-placeholder" role="placeholder">Enter your name</span> 
                         <svg class="signup-form__field-icon signup-form__field-icon--user">
-                            <use href="/clicker-heroes-game//assets/icons/form/form-icons-sprite.svg#icon-user" />
+                            <use href="${BASE_URL}/assets/icons/form/form-icons-sprite.svg#icon-user" />
                         </svg>
                         <button type="button" class="signup-form__field-clear-btn"></button>
                     </label>
@@ -205,7 +206,7 @@ export class SignUpForm extends WebComponent {
                         />
                         <span class="signup-form__field-placeholder" role="placeholder">Enter character name</span> 
                         <svg class="signup-form__field-icon signup-form__field-icon--user">
-                            <use href="/clicker-heroes-game/assets/icons/form/form-icons-sprite.svg#icon-user" />
+                            <use href="${BASE_URL}/assets/icons/form/form-icons-sprite.svg#icon-user" />
                         </svg>
                         <button type="button" class="signup-form__field-clear-btn"></button>
                     </label>
@@ -218,7 +219,7 @@ export class SignUpForm extends WebComponent {
                         />
                         <span class="signup-form__field-placeholder" role="placeholder">Enter email</span>
                         <svg class="signup-form__field-icon signup-form__field-icon--email">
-                            <use href="/clicker-heroes-game/assets/icons/form/form-icons-sprite.svg#icon-email" />
+                            <use href="${BASE_URL}/assets/icons/form/form-icons-sprite.svg#icon-email" />
                         </svg>
                         <button type="button" class="signup-form__field-clear-btn"></button>
                      </label>
