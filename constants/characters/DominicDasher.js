@@ -3,7 +3,7 @@ import { BASE_URL } from '../config.js';
 export const DominicDasher = {
   name: 'Dominic Dasher',
   nickname: 'Fat Dominic',
-  stamina: 5,
+  stamina: 60,
   level: 4,
   className: 'dominicDasher',
   appearence: BASE_URL + '/assets/icons/characters/gang_character_04_sunset.svg',

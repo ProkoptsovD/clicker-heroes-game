@@ -3,7 +3,7 @@ import { BASE_URL } from '../config.js';
 export const SalvatoreVitale = {
   name: 'Salvatore Vitale',
   nickname: 'Good-looking Sal',
-  stamina: 5,
+  stamina: 35,
   level: 3,
   className: 'salvatoreVitale',
   appearence: BASE_URL + '/assets/icons/characters/gang_character_03_parking.svg',

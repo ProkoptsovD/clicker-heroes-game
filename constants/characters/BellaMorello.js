@@ -3,7 +3,7 @@ import { BASE_URL } from '../config.js';
 export const BellaMorello = {
   name: 'Bella Morelo',
   nickname: 'Lovely B',
-  stamina: 5,
+  stamina: 25,
   level: 2,
   size: { width: 'auto', height: '360px' },
   className: 'bellaMorelo',

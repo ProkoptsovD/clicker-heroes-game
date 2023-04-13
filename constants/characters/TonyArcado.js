@@ -3,7 +3,7 @@ import { BASE_URL } from '../config.js';
 export const TonyArcado = {
   name: 'Tony Arcado',
   nickname: 'The CockRoach',
-  stamina: 5,
+  stamina: 15,
   level: 1,
   appearence: BASE_URL + '/assets/icons/characters/gang_character_01_bank.svg',
   location: BASE_URL + '/assets/icons/locations/bank.svg',
