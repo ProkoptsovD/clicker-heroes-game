@@ -93,7 +93,15 @@ Just open terminal, navigate to folder you want to keep this repo and run comman
 git clone https://github.com/ProkoptsovD/clicker-heroes-game.git
 ```
 
-Once it's done, enter the folder and run:
+Once it's done, open the folder with project in your IDE (like VS Code) and find file `config.js`:
+
+`/constants/config.js`
+
+then change BASE_URL to empty string:
+
+`export const BASE_URL = '';`
+
+after that run command in terminal:
 
 ```js
 npm start
@@ -134,3 +142,7 @@ Dmytro Prokoptsov: <p align="center">[![gmail]][gmail-url] [![tg]][tg-url]</p>
 [gmail-url]: mailto:fenderman1992@gmail.com
 [tg]: https://img.shields.io/badge/-telegram-ffffff?logo=telegram
 [tg-url]: https://t.me/dima_prokoptsov
+
+```
+
+```
