@@ -11,6 +11,7 @@ export class DialoguePanel extends WebComponent {
    * @param {{
    *  firstSpeakerIcon: string;
    *  secondSpeakerIcon: string;
+   *  playerName: string;
    *  dialogue: Array<{ enemy: string; detective: string; }>
    *  dialogueOrder: 'topDown' | 'downTop';
    *  dialogueKeys: { first: string, second: string };
@@ -20,6 +21,7 @@ export class DialoguePanel extends WebComponent {
   constructor({
     firstSpeakerIcon,
     secondSpeakerIcon,
+    playerName,
     dialogue,
     dialogueOrder = 'topDown',
     dialogueKeys = { first: 'enemy', second: 'detective' },
@@ -40,7 +42,7 @@ export class DialoguePanel extends WebComponent {
     this.currentDialogue = 0;
     this.lastDialogueIndex = this.dialogue.length - 1;
     this.anchor = '{{name}}';
-    this.playerName = this.store.getState().user?.characterName;
+    this.playerName = playerName;
     this.nextFrame = this.nextFrame.bind(this);
 
     this.#normalizeDialogueKeys();
@@ -111,7 +113,7 @@ export class DialoguePanel extends WebComponent {
    * @param {string} name
    */
   #addPlayerNicknameToSpeech(name) {
-    return name.replaceAll(this.anchor, this.playerName);
+    return name?.replaceAll(this.anchor, this.playerName);
   }
 
   /**
@@ -133,18 +135,22 @@ export class DialoguePanel extends WebComponent {
           <div class="dialogue-panel__wrapper ${this.dialogueOrder}">
             <div class="dialogue-panel__speaker dialogue-panel__speaker--one">
               <div class="dialogue-panel__speaker-icon-wrapper">
-                <img class="dialogue-panel__speaker-icon" src=${
-                  this.firstSpeakerIcon
-                } alt="speaker one icon"/>
+                <img
+                  class="dialogue-panel__speaker-icon"
+                  src=${this.firstSpeakerIcon}
+                  alt="speaker one icon"
+                />
               </div>
               <p class="dialogue-panel__speaker-text">${firstSpeakerText}</p>
             </div>
             <div class="dialogue-panel__speaker dialogue-panel__speaker--two">
               <p class="dialogue-panel__speaker-text">${secondSpeakerText}</p>
               <div class="dialogue-panel__speaker-icon-wrapper">
-                <img class="dialogue-panel__speaker-icon" src=${
-                  this.secondSpeakerIcon
-                } alt="speaker one icon"/>
+                <img
+                  class="dialogue-panel__speaker-icon"
+                  src=${this.secondSpeakerIcon}
+                  alt="speaker one icon"
+                />
               </div>
             </div>
           </div>

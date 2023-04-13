@@ -3,10 +3,6 @@ import { Logo } from './Logo.js';
 
 // services
 import { validationService } from '../services/ValidationService.js';
-import { localStorageService } from '../services/storageService.js';
-
-// keys
-import * as APP_KEYS from '/src/constants/appKeys.js';
 
 /**
  * Form to register user
@@ -25,6 +21,12 @@ export class SignUpForm extends WebComponent {
     invalid: (value) => `Please, provide valid ${value}`
   };
 
+  /**
+   * @param {{
+   *  validateEmail: () => boolean;
+   *  onFormSubmit: ({ userName: string; characterName: string; email: string}) => void;
+   * }} config
+   */
   constructor({
     validateEmail = validationService.validateEmail.bind(validationService),
     onFormSubmit,
@@ -97,8 +99,7 @@ export class SignUpForm extends WebComponent {
       email: email.value
     };
 
-    localStorageService.save(APP_KEYS.LOCAL_STORAGE_KEYS.USER, user);
-    this.onFormSubmit();
+    this.onFormSubmit(user);
   }
 
   // corrects styles on value change

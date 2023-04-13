@@ -29,7 +29,7 @@ export class Modal extends WebComponent {
                 ${this.text}
             </p>
             <p class="modal__text">
-                Thank you for your service, detective ${this.store.getState().user.characterName}.
+                Thank you for your service, detective ${this.store.getState().user?.characterName}.
             </p>
             <button type="button" class="modal__button">${this.buttonText}</button>
         </div>

@@ -107,12 +107,15 @@ export class Level extends WebComponent {
    * if any other dialogue in not provided
    */
   createDefaultDialoguePanel() {
+    const playerName = this.store.getState().user?.characterName;
+
     return new DialoguePanel({
       firstSpeakerIcon: this.enemy.miniIcon,
       secondSpeakerIcon: '/src/assets/images/character-icons/main_hero_icon_01.png',
       dialogue: this.enemy.dialogues,
       dialogueOrder: this.enemy.dialogueOrder,
       dialogueKeys: { first: 'enemy', second: 'detective' },
+      playerName,
       onDialogueEnd: () => this.playLevel()
     });
   }

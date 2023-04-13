@@ -9,6 +9,14 @@
   margin-top: 100px;
 }
 
+/* 
+ * fast click causes image or speech frames selection so we want to prevent that
+ * by setting transaprent selection background
+*/
+.enemy *::selection {
+  background-color: transparent;
+}
+
 .enemy img {
   margin-inline: auto;
 }

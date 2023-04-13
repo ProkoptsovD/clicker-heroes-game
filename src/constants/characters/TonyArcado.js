@@ -1,9 +1,7 @@
-import { Enemy } from '../../lib/Enemy.js';
-
-export const TonyArcado = new Enemy({
+export const TonyArcado = {
   name: 'Tony Arcado',
   nickname: 'The CockRoach',
-  stamina: 15,
+  stamina: 5,
   level: 1,
   appearence: '/src/assets/icons/characters/gang_character_01_bank.svg',
   location: '/src/assets/icons/locations/bank.svg',
@@ -21,4 +19,4 @@ export const TonyArcado = new Enemy({
     }
   ],
   dashboardTheme: 'bank'
-});
+};

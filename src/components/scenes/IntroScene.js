@@ -9,6 +9,7 @@ export class IntroScene extends WebComponent {
     this.tag = IntroScene.tag;
     this.cheifIcon = '/src/assets/images/character-icons/police_character_icon_01_chief.png';
     this.heroIcon = '/src/assets/images/character-icons/main_hero_icon_01.png';
+    this.playerName = playerName;
     this.frames = {
       1: `
         <section class="scene">
@@ -48,7 +49,6 @@ export class IntroScene extends WebComponent {
             </section>
     `
     };
-    this.playerName = playerName;
     this.onIntroEnd = onIntroEnd;
     this.currentFrame = 1;
     this.currentSpeaker = 0;

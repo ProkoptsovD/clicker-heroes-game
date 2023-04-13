@@ -1,6 +1,6 @@
 .dialogue-panel {
   --anim-speed: 700ms;
-  --delay: 700ms;
+  --delay: 2s;
   --icon-size: 40px;
 
   padding: 0.5rem;
@@ -42,26 +42,24 @@
 
 .dialogue-panel__speaker--one {
   justify-content: flex-start;
-  transform: translateX(-100%);
+  transform: translateX(-120%);
 }
 
 .dialogue-panel__wrapper.topDown .dialogue-panel__speaker--one {
   animation: dialogue var(--anim-speed) var(--delay) linear forwards;
 }
 .dialogue-panel__wrapper.downTop .dialogue-panel__speaker--one {
-  animation: dialogue var(--anim-speed) linear calc((var(--anim-speed) / 1.5) + var(--delay))
-    forwards;
+  animation: dialogue var(--anim-speed) linear calc((var(--anim-speed) / 2) + var(--delay)) forwards;
 }
 
 .dialogue-panel .dialogue-panel__speaker--two {
   justify-content: flex-end;
   margin-left: auto;
-  transform: translateX(100%);
+  transform: translateX(120%);
 }
 
 .dialogue-panel__wrapper.topDown .dialogue-panel__speaker--two {
-  animation: dialogue var(--anim-speed) linear calc((var(--anim-speed) / 1.5) + var(--delay))
-    forwards;
+  animation: dialogue var(--anim-speed) linear calc((var(--anim-speed) / 2) + var(--delay)) forwards;
 }
 .dialogue-panel__wrapper.downTop .dialogue-panel__speaker--two {
   animation: dialogue var(--anim-speed) var(--delay) linear forwards;
