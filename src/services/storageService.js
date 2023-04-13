@@ -29,6 +29,10 @@ class StorageService {
       console.error('Get state error: ', error.message);
     }
   }
+
+  clear() {
+    localStorage.clear();
+  }
 }
 
 export const localStorageService = new StorageService();

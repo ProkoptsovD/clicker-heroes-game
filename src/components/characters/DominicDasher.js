@@ -3,14 +3,15 @@ import { Enemy } from '../../lib/Enemy.js';
 export const DominicDasher = new Enemy({
   name: 'Dominic Dasher',
   nickname: 'Fat Dominic',
-  stamina: 10,
+  stamina: 60,
   level: 4,
   className: 'dominicDasher',
   appearence: '/src/assets/icons/characters/gang_character_04_sunset.svg',
   location: '/src/assets/icons/locations/sunset_street.svg',
+  miniIcon: '/src/assets/images/character-icons/gang_character_icon_04.png',
   phrases: {
     intro: 'People like you I eat for lunch!',
-    isArrested: 'Habe a cigarette for cellmates?'
+    isArrested: 'Have a cigarette for cellmates?'
   },
   dialogues: [
     {

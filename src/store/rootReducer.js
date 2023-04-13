@@ -1,4 +1,4 @@
-// actions
+/** actions */
 import {
   DECREMENT_STAMINA,
   RESET_STAMINA,
@@ -6,10 +6,17 @@ import {
   NEXT_LEVEL,
   SET_STAMINA,
   SET_TOTAL_SCORE,
-  HYDRATE_STORE
+  HYDRATE_STORE,
+  RESET
 } from './actions.js';
 
+/** state */
+import { initialState } from './initialState.js';
+
+/** services */
 import { localStorageService } from '../services/storageService.js';
+
+/** constants */
 import * as APP_KEYS from '../constants/appKeys.js';
 
 export function rootReducer(state, action) {
@@ -53,6 +60,10 @@ export function rootReducer(state, action) {
         ...state,
         totalScore: action.payload.score,
         user: action.payload.user
+      };
+    case RESET:
+      return {
+        ...initialState
       };
     default:
       return state;

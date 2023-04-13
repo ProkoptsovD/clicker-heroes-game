@@ -27,7 +27,7 @@ export class SignUpForm extends WebComponent {
 
   constructor({
     validateEmail = validationService.validateEmail.bind(validationService),
-    formSubmitHandler = localStorageService.save.bind(localStorageService),
+    onFormSubmit,
     ...config
   } = {}) {
     super({ addSubscription: false, ...config });
@@ -35,12 +35,12 @@ export class SignUpForm extends WebComponent {
     this.title = SignUpForm.defaultTitle;
     this.buttonText = SignUpForm.defaultButtonText;
     this.validateEmail = validateEmail;
-    this.formSubmitHandler = formSubmitHandler;
+    this.onFormSubmit = onFormSubmit;
 
-    this.onBlur = this.onBlur.bind(this);
-    this.onInputChange = this.onInputChange.bind(this);
-    this.onFocus = this.onFocus.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onBlur = this.#onBlur.bind(this);
+    this.onInputChange = this.#onInputChange.bind(this);
+    this.onFocus = this.#onFocus.bind(this);
+    this.onSubmit = this.#onSubmit.bind(this);
   }
 
   connectedCallback() {
@@ -49,23 +49,23 @@ export class SignUpForm extends WebComponent {
 
     this.render();
 
-    this.getRefs();
-    this.handleInputEvents('subscribe');
+    this.#getRefs();
+    this.#handleInputEvents('subscribe');
     this.formRef.addEventListener('submit', this.onSubmit);
   }
 
   disconnectedCallback() {
     this.store.unsibscribe(this.subscription);
     this.formRef.removeEventListener('submit', this.onSubmit);
-    this.handleInputEvents('unsubscribe');
+    this.#handleInputEvents('unsubscribe');
   }
 
-  getRefs() {
+  #getRefs() {
     this.formRef = this.querySelector('.signup-form');
   }
 
   /** subscribes to input events */
-  handleInputEvents(type) {
+  #handleInputEvents(type) {
     const { userName, characterName, email } = this.formRef.elements;
 
     [userName, characterName, email].forEach((input) => {
@@ -84,7 +84,7 @@ export class SignUpForm extends WebComponent {
   }
 
   // submits form
-  onSubmit(event) {
+  #onSubmit(event) {
     event.preventDefault();
     const { userName, characterName, email } = event.currentTarget.elements;
 
@@ -97,51 +97,52 @@ export class SignUpForm extends WebComponent {
       email: email.value
     };
 
-    this.formSubmitHandler(APP_KEYS.LOCAL_STORAGE_KEYS.USER, user);
+    localStorageService.save(APP_KEYS.LOCAL_STORAGE_KEYS.USER, user);
+    this.onFormSubmit();
   }
 
   // corrects styles on value change
-  onFocus({ currentTarget }) {
+  #onFocus({ currentTarget }) {
     const { parentElement } = currentTarget;
 
-    this.removeErrorMessage(parentElement);
+    this.#removeErrorMessage(parentElement);
     parentElement.classList.remove('field-invalid');
   }
 
   // corrects styles on value change
-  onInputChange(event) {
+  #onInputChange(event) {
     const { value, parentElement } = event.currentTarget;
 
     if (value) return;
 
-    this.removeErrorMessage(parentElement);
+    this.#removeErrorMessage(parentElement);
     parentElement.classList.remove('field-valid');
     parentElement.classList.remove('field-invalid');
   }
 
   // validates input on loose focus
-  onBlur({ currentTarget }) {
+  #onBlur({ currentTarget }) {
     const { value: rawValue, parentElement, name } = currentTarget;
 
     // cuts white spaces on both sides
     const value = rawValue.trim();
 
     if (!value) {
-      this.appendErrorMessage(SignUpForm.errors.required, parentElement);
+      this.#appendErrorMessage(SignUpForm.errors.required, parentElement);
       return parentElement.classList.add('field-invalid');
     }
 
     if (name !== SignUpForm.inputNames.email) {
-      this.removeErrorMessage(parentElement);
+      this.#removeErrorMessage(parentElement);
       return parentElement.classList.add('field-valid');
     }
 
     if (!this.validateEmail(value)) {
-      this.appendErrorMessage(SignUpForm.errors.invalid(name), parentElement);
+      this.#appendErrorMessage(SignUpForm.errors.invalid(name), parentElement);
       return parentElement.classList.add('field-invalid');
     }
 
-    this.removeErrorMessage(parentElement);
+    this.#removeErrorMessage(parentElement);
     parentElement.classList.add('field-valid');
   }
 
@@ -151,7 +152,7 @@ export class SignUpForm extends WebComponent {
    * @param {HTMLElement} containerEl // node element
    * @returns {void}
    */
-  appendErrorMessage(msg, containerEl) {
+  #appendErrorMessage(msg, containerEl) {
     const errorEl = document.createElement('strong');
     errorEl.textContent = msg;
     errorEl.classList.add('signup-form__field-error');
@@ -164,7 +165,7 @@ export class SignUpForm extends WebComponent {
    * @param {HTMLElement} containerEl // node element
    * @returns {void}
    */
-  removeErrorMessage(containerEl) {
+  #removeErrorMessage(containerEl) {
     const errorEl = document.querySelector('.signup-form__field-error');
     const isDescendant = containerEl.contains(errorEl);
 

@@ -1,6 +1,6 @@
 .level {
   --height: 100px;
-  --bg-clr: #000000;
+  --bg-clr: #242424;
   --position: -5%;
   --anim-config: 1s forwards;
 
@@ -168,6 +168,10 @@
   animation: arrested 1s forwards cubic-bezier(1, 0.31, 0.79, 0.6) 1s;
   opacity: 0;
   z-index: 100;
+}
+
+.arrested::selection {
+  background-color: transparent;
 }
 
 @keyframes arrested {

@@ -3,12 +3,13 @@ import { Enemy } from '../../lib/Enemy.js';
 export const BellaMorello = new Enemy({
   name: 'Bella Morelo',
   nickname: 'Lovely B',
-  stamina: 25,
+  stamina: 35,
   level: 2,
   size: { width: 'auto', height: '360px' },
   className: 'bellaMorelo',
   appearence: '/src/assets/icons/characters/gang_character_02_club.svg',
   location: '/src/assets/icons/locations/club.svg',
+  miniIcon: '/src/assets/images/character-icons/gang_character_icon_02.png',
   phrases: {
     intro: 'Shall we start, darling?',
     isArrested: 'I tried so hard and got so far, but in the end...'

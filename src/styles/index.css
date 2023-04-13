@@ -16,7 +16,10 @@
 @import './panels/index.css';
 
 /* SCENES */
-@import './sceens/index.css';
+@import './scenes/index.css';
+
+/* SCREENS */
+@import './screens/index.css';
 
 /* GRADIENTS */
 @import './gradients.css';

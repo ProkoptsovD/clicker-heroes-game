@@ -3,10 +3,11 @@ import { Enemy } from '../../lib/Enemy.js';
 export const TonyArcado = new Enemy({
   name: 'Tony Arcado',
   nickname: 'The CockRoach',
-  stamina: 10,
+  stamina: 15,
   level: 1,
   appearence: '/src/assets/icons/characters/gang_character_01_bank.svg',
   location: '/src/assets/icons/locations/bank.svg',
+  miniIcon: '/src/assets/images/character-icons/gang_character_icon_01.png',
   phrases: { intro: 'Come on! What are you wiating for???', isArrested: 'Bloody hell!!!' },
   dialogues: [
     {

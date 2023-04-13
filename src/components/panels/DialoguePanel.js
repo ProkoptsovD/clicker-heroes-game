@@ -40,10 +40,10 @@ export class DialoguePanel extends WebComponent {
     this.currentDialogue = 0;
     this.lastDialogueIndex = this.dialogue.length - 1;
     this.anchor = '{{name}}';
-    this.playerName = this.store.getState().user.characterName;
+    this.playerName = this.store.getState().user?.characterName;
     this.nextFrame = this.nextFrame.bind(this);
 
-    this.normalizeDialogueKeys();
+    this.#normalizeDialogueKeys();
   }
 
   connectedCallback() {
@@ -95,13 +95,13 @@ export class DialoguePanel extends WebComponent {
    * transforms kyes from original dialogue to the ones needed for the template
    * it's done for the reason to be able to pass dialogues with any keys pairs
    */
-  normalizeDialogueKeys() {
+  #normalizeDialogueKeys() {
     this.dialogue = this.dialogue.map((dialogue) => {
       const { first, second } = this.dialogueKeys;
 
       return {
-        firstSpeakerText: this.addPlayerNicknameToSpeech(dialogue[first]),
-        secondSpeakerText: this.addPlayerNicknameToSpeech(dialogue[second])
+        firstSpeakerText: this.#addPlayerNicknameToSpeech(dialogue[first]),
+        secondSpeakerText: this.#addPlayerNicknameToSpeech(dialogue[second])
       };
     });
   }
@@ -110,7 +110,7 @@ export class DialoguePanel extends WebComponent {
    * replaces {{name}} anchor in speech with character name user has provided
    * @param {string} name
    */
-  addPlayerNicknameToSpeech(name) {
+  #addPlayerNicknameToSpeech(name) {
     return name.replaceAll(this.anchor, this.playerName);
   }
 
@@ -121,12 +121,12 @@ export class DialoguePanel extends WebComponent {
    * [{ enemy: '1', detective: '1' }, { enemy: '2', detective: '2' }] ----> there are two pairs of dialogues
    * @param {number} key // array index of dialogue starting from 0, e.g 0 means the first pair
    */
-  getDialoguePair(key) {
+  #getDialoguePair(key) {
     return this.dialogue[key];
   }
 
   render() {
-    const { firstSpeakerText, secondSpeakerText } = this.getDialoguePair(this.currentDialogue);
+    const { firstSpeakerText, secondSpeakerText } = this.#getDialoguePair(this.currentDialogue);
 
     this.innerHTML = `
         <div class="dialogue-panel">

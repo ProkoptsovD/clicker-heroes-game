@@ -4,6 +4,7 @@
 
   height: 100dvh;
   padding-top: 2rem;
+  overflow: hidden;
 }
 
 .main-screen__container {
@@ -14,7 +15,10 @@
 
 .main-screen__bg-container {
   position: absolute;
-  inset: 0;
+  bottom: -28px;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
   background-image: var(--bg);
   background-size: 350%;
@@ -50,9 +54,9 @@
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1240px) {
   .main-screen__bg-container {
-    background-position: 80% 133%;
+    background-position: 80% 96%;
   }
 }
 @media screen and (min-width: 1024px) {
