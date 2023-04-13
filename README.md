@@ -101,6 +101,8 @@ then change BASE_URL to empty string:
 
 `export const BASE_URL = '';`
 
+also replace path in index.httm file to be `/index.css` and `/index,js` in script tag and link tag correspondenly
+
 after that run command in terminal:
 
 ```js
