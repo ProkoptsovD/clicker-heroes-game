@@ -1,16 +1,12 @@
-import appearence from '../../assets/icons/characters/gang_character_04_sunset.svg';
-import location from '../../assets/icons/locations/sunset_street.svg';
-import miniIcon from '../../assets/images/character-icons/gang_character_icon_04.png';
-
 export const DominicDasher = {
   name: 'Dominic Dasher',
   nickname: 'Fat Dominic',
   stamina: 5,
   level: 4,
   className: 'dominicDasher',
-  appearence,
-  location,
-  miniIcon,
+  appearence: '/assets/icons/characters/gang_character_04_sunset.svg',
+  location: '/assets/icons/locations/sunset_street.svg',
+  miniIcon: '/assets/images/character-icons/gang_character_icon_04.png',
   phrases: {
     intro: 'People like you I eat for lunch!',
     isArrested: 'Have a cigarette for cellmates?'

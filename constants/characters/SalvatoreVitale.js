@@ -1,16 +1,12 @@
-import appearence from '../../assets/icons/characters/gang_character_03_parking.svg';
-import location from '../../assets/icons/locations/undeground_parking.svg';
-import miniIcon from '../../assets/images/character-icons/gang_character_icon_03.png';
-
 export const SalvatoreVitale = {
   name: 'Salvatore Vitale',
   nickname: 'Good-looking Sal',
   stamina: 5,
   level: 3,
   className: 'salvatoreVitale',
-  appearence,
-  location,
-  miniIcon,
+  appearence: '/assets/icons/characters/gang_character_03_parking.svg',
+  location: '/assets/icons/locations/undeground_parking.svg',
+  miniIcon: '/assets/images/character-icons/gang_character_icon_03.png',
   phrases: { intro: 'What? Did you shit your pants?', isArrested: 'Oh... poor me...' },
   dialogues: [
     {

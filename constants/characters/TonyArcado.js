@@ -3,9 +3,9 @@ export const TonyArcado = {
   nickname: 'The CockRoach',
   stamina: 5,
   level: 1,
-  appearence: '/clicker-heroes-game/assets/icons/characters/gang_character_01_bank.svg',
-  location: '/clicker-heroes-game/assets/icons/locations/bank.svg',
-  miniIcon: '/clicker-heroes-game/assets/images/character-icons/gang_character_icon_01.png',
+  appearence: '/assets/icons/characters/gang_character_01_bank.svg',
+  location: '/assets/icons/locations/bank.svg',
+  miniIcon: '/assets/images/character-icons/gang_character_icon_01.png',
   phrases: { intro: 'Come on! What are you wiating for???', isArrested: 'Bloody hell!!!' },
   dialogues: [
     {
