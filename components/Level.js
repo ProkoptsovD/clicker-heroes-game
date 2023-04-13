@@ -111,7 +111,7 @@ export class Level extends WebComponent {
 
     return new DialoguePanel({
       firstSpeakerIcon: this.enemy.miniIcon,
-      secondSpeakerIcon: '/assets/images/character-icons/main_hero_icon_01.png',
+      secondSpeakerIcon: '/clicker-heroes-game/assets/images/character-icons/main_hero_icon_01.png',
       dialogue: this.enemy.dialogues,
       dialogueOrder: this.enemy.dialogueOrder,
       dialogueKeys: { first: 'enemy', second: 'detective' },
