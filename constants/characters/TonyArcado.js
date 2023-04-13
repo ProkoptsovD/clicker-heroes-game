@@ -1,6 +1,6 @@
-import appearence from '../../assets/icons/characters/gang_character_01_bank.svg';
-import location from '../../assets/icons/locations/bank.svg';
-import miniIcon from '../../assets/images/character-icons/gang_character_icon_01.png';
+const appearence = require('../../assets/icons/characters/gang_character_01_bank.svg');
+const location = require('../../assets/icons/locations/bank.svg');
+const miniIcon = require('../../assets/images/character-icons/gang_character_icon_01.png');
 
 export const TonyArcado = {
   name: 'Tony Arcado',
