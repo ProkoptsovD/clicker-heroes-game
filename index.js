@@ -4,7 +4,7 @@
  * that's why you may see unused imports somewhere
  */
 
-import { App } from './src/App.js';
+import { App } from './App.js';
 
 const app = new App({ selector: '#root' });
 app.init();

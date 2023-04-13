@@ -1,12 +1,16 @@
+import appearence from '../../assets/icons/characters/gang_character_05_bar.svg';
+import location from '../../assets/icons/locations/bar.svg';
+import miniIcon from '../../assets/images/character-icons/gang_character_icon_05.png';
+
 export const AlfredoRossi = {
   name: 'Alfredo Rossi',
   nickname: 'Big Al',
   stamina: 5,
   level: 5,
   className: 'alfredoRossi',
-  appearence: '/src/assets/icons/characters/gang_character_05_bar.svg',
-  location: '/src/assets/icons/locations/bar.svg',
-  miniIcon: '/src/assets/images/character-icons/gang_character_icon_05.png',
+  appearence,
+  location,
+  miniIcon,
   phrases: {
     intro: 'You made a silly choice!',
     isArrested: "I'll get out of jail and kill you..."

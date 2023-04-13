@@ -1,4 +1,4 @@
-import { WebComponent } from '/src/lib/WebComponent.js';
+import { WebComponent } from '../lib/WebComponent.js';
 import { Logo } from './Logo.js';
 
 // services

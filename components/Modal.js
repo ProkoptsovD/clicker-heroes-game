@@ -1,4 +1,4 @@
-import { WebComponent } from '/src/lib/WebComponent.js';
+import { WebComponent } from '../lib/WebComponent.js';
 import { Confetti } from '../lib/Confetti.js';
 
 export class Modal extends WebComponent {

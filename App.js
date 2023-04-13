@@ -2,7 +2,7 @@
 import { store } from './store/store.js';
 
 /** constants */
-import * as APP_KEYS from '/src/constants/appKeys.js';
+import * as APP_KEYS from './constants/appKeys.js';
 import { levels } from './constants/levels.js';
 import { MENU_TABS } from './constants/menuTabs.js';
 

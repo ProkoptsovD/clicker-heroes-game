@@ -4,7 +4,7 @@
   --padding-left: 2rem;
   --padding-right: 1rem;
   --input-state: var(--clr-neutral);
-  --btn-icon: url('/src/assets/icons/form/cross.svg');
+  --btn-icon: url('../../assets/icons/form/cross.svg');
   --bg-clr: #ffffff;
 
   margin: 0 auto;
@@ -157,11 +157,11 @@
 /* VALIDIDATION */
 .field-valid {
   --input-state: var(--clr-valid);
-  --btn-icon: url('/src/assets/icons/form/check.svg');
+  --btn-icon: url('../../assets/icons/form/check.svg');
 }
 .field-invalid {
   --input-state: var(--clr-invalid);
-  --btn-icon: url('/src/assets/icons/form/cross.svg');
+  --btn-icon: url('../../assets/icons/form/cross.svg');
 }
 
 /* SUBMIT BUTTON */

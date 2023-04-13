@@ -1,11 +1,15 @@
+import appearence from '../../assets/icons/characters/gang_character_01_bank.svg';
+import location from '../../assets/icons/locations/bank.svg';
+import miniIcon from '../../assets/images/character-icons/gang_character_icon_01.png';
+
 export const TonyArcado = {
   name: 'Tony Arcado',
   nickname: 'The CockRoach',
   stamina: 5,
   level: 1,
-  appearence: '/src/assets/icons/characters/gang_character_01_bank.svg',
-  location: '/src/assets/icons/locations/bank.svg',
-  miniIcon: '/src/assets/images/character-icons/gang_character_icon_01.png',
+  appearence,
+  location,
+  miniIcon,
   phrases: { intro: 'Come on! What are you wiating for???', isArrested: 'Bloody hell!!!' },
   dialogues: [
     {

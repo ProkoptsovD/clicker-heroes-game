@@ -83,7 +83,7 @@
   overflow-y: scroll;
 
   flex-grow: 1;
-  background-image: url('/src/assets/images/menu_item_preview_02.webp');
+  background-image: url('../../assets/images/menu_item_preview_02.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

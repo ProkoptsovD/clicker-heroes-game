@@ -1,3 +1,7 @@
+import appearence from '../../assets/icons/characters/gang_character_02_club.svg';
+import location from '../../assets/icons/locations/club.svg';
+import miniIcon from '../../assets/images/character-icons/gang_character_icon_02.png';
+
 export const BellaMorello = {
   name: 'Bella Morelo',
   nickname: 'Lovely B',
@@ -5,9 +9,9 @@ export const BellaMorello = {
   level: 2,
   size: { width: 'auto', height: '360px' },
   className: 'bellaMorelo',
-  appearence: '/src/assets/icons/characters/gang_character_02_club.svg',
-  location: '/src/assets/icons/locations/club.svg',
-  miniIcon: '/src/assets/images/character-icons/gang_character_icon_02.png',
+  appearence,
+  location,
+  miniIcon,
   phrases: {
     intro: 'Shall we start, darling?',
     isArrested: 'I tried so hard and got so far, but in the end...'

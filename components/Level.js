@@ -3,6 +3,10 @@ import { WebComponent } from '../lib/WebComponent.js';
 import { DashboardPanel } from './panels/DashboardPanel.js';
 import { DialoguePanel } from './panels/DialoguePanel.js';
 
+// assets
+import heroMiniIcon from '../assets/images/character-icons/main_hero_icon_01.png';
+import arrestedIcon from '../assets/images/arrested.png';
+
 // classes, not web component
 import { Enemy } from '../lib/Enemy.js';
 
@@ -111,7 +115,7 @@ export class Level extends WebComponent {
 
     return new DialoguePanel({
       firstSpeakerIcon: this.enemy.miniIcon,
-      secondSpeakerIcon: '/src/assets/images/character-icons/main_hero_icon_01.png',
+      secondSpeakerIcon: heroMiniIcon,
       dialogue: this.enemy.dialogues,
       dialogueOrder: this.enemy.dialogueOrder,
       dialogueKeys: { first: 'enemy', second: 'detective' },
@@ -124,7 +128,7 @@ export class Level extends WebComponent {
   playArrestedAnimation() {
     const img = document.createElement('img');
 
-    img.src = '/src/assets/images/arrested.png';
+    img.src = arrestedIcon;
     img.alt = 'arrested icon';
     img.classList.add('arrested');
 

@@ -97,8 +97,8 @@
   background-repeat: no-repeat;
   background-size: 100%;
 
-  mask: url('/src/assets/icons/previews/menu_item_preview_frame.svg') right/101% 109%;
-  -webkit-mask: url('/src/assets/icons/previews/menu_item_preview_frame.svg') right/101% 109%;
+  mask: url('../../assets/icons/previews/menu_item_preview_frame.svg') right/101% 109%;
+  -webkit-mask: url('../../assets/icons/previews/menu_item_preview_frame.svg') right/101% 109%;
 }
 
 .preview,
