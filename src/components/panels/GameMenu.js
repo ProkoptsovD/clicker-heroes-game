@@ -1,6 +1,7 @@
-import { WebComponent } from '../lib/WebComponent.js';
-import { SET_ACTIVE_MENU_TAB } from '../store/actions.js';
+import { WebComponent } from '../../lib/WebComponent.js';
+import { SET_ACTIVE_MENU_TAB } from '../../store/actions.js';
 
+/** game menu panel with navigation */
 export class GameMenu extends WebComponent {
   static tag = 'game-menu';
 
@@ -12,14 +13,6 @@ export class GameMenu extends WebComponent {
   }
 
   connectedCallback() {
-    // get items list from DOM attribute
-    this.items = this.getAttribute('items');
-    this.items = this._convertStringArrayIntoArray(this.items);
-
-    //get previews images from DOM attribute
-    this.previews = this.getAttribute('previews');
-    this.previews = this._convertStringArrayIntoArray(this.previews);
-
     // maping CSS style classes for preview frames of menu buttons
     this.cssClassesMap = this.items.map((_, idx) => `frame${idx}`);
 
@@ -28,16 +21,18 @@ export class GameMenu extends WebComponent {
     this.addEventListener('mouseover', this.onmouseover);
 
     this.render();
-    this.getRefs();
+    this.#getRefs();
+    this.#bindTabEventsOnClick();
   }
 
   disconnectedCallback() {
     this.removeEventListener('click', this.onclick);
     this.removeEventListener('mouseover', this.onmouseover);
+    this.tabs?.forEach((tab) => (tab.onclick = undefined));
   }
 
-  getRefs() {
-    this.ulRef = this.querySelector('.game-menu__list');
+  #getRefs() {
+    this.ulRef = this.querySelector('[data-game-menu-tablist]');
     this.tabs = [...(this.querySelectorAll('[data-tab') ?? [])];
   }
 
@@ -67,28 +62,33 @@ export class GameMenu extends WebComponent {
       // othrewise dispatch action
       this.store.dispatch({
         type: SET_ACTIVE_MENU_TAB,
-        payload: {
-          activeTab: tab
-        }
+        payload: { activeTab: tab }
       });
     }
   }
 
+  #bindTabEventsOnClick() {
+    this.tabs.forEach((tab) => {
+      const evt = new CustomEvent('switch-tab', { bubbles: true, detail: tab.id });
+      tab.onclick = () => tab.dispatchEvent(evt);
+    });
+  }
+
   render() {
-    const { activeTab } = this.store.getState();
+    const { activeTab, totalScore } = this.store.getState();
 
     this.innerHTML = `
         <div class="game-menu">
             <div class="game-menu__side game-menu__side--left">
 
-            <ul class="game-menu__list">
+            <ul data-game-menu-tablist class="game-menu__list">
                 ${this.items
                   .map((item, idx) => {
                     const isActive = activeTab === idx.toString();
                     const className = isActive ? 'menu-button--active' : '';
 
                     return `<li class="game-menu__list-item">
-                        <button type="button" data-tab="${idx}" class="menu-button ${className}">${item}</button>
+                        <button type="button" data-tab="${idx}" id="${item}" class="menu-button ${className}">${item}</button>
                       </li>`;
                   })
                   .join('')}
@@ -96,19 +96,37 @@ export class GameMenu extends WebComponent {
             </div>
             <div class="game-menu__side game-menu__side--right">
               <div class="game-menu__frame-wrapper ${this.cssClassesMap[activeTab]}">
-                <div class="game-menu__item-preview-frame">
-                  <img
-                    class="preview__mask"
-                    src=${this.previews[activeTab]}
-                    alt="menu tab #${activeTab} preview"
-                  />
-                </div>
+               ${
+                 this.previews[activeTab]
+                   ? `
+                  <div class="game-menu__item-preview-frame">
+                    <img
+                      class="preview__mask"
+                      src=${this.previews[activeTab]}
+                      alt="menu tab #${activeTab} preview"
+                    />
+                  </div>
 
-                <img
-                  class="preview"
-                  src=${this.previews[activeTab]}
-                  alt="menu tab #${activeTab} preview 2"
-                />
+                  <img
+                    class="preview"
+                    src=${this.previews[activeTab]}
+                    alt="menu tab #${activeTab} preview 2"
+                  />
+               `
+                   : `
+                  <div class="game-menu__item-preview-frame">
+                    <img
+                        class="preview__mask"
+                        src=${this.previews[2]}
+                        alt="menu tab ${activeTab} preview"
+                      >
+                  </div>
+                  <span class="game-menu__score">
+                    ${totalScore} ${totalScore === 1 ? 'point' : 'points'}
+                  </span>
+               `
+               }
+                
               </div>
             </div>
         </div>

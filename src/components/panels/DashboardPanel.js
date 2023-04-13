@@ -4,7 +4,7 @@ export class DashboardPanel extends WebComponent {
   static tag = 'app-dashboard-panel';
 
   /**
-   *  config dasboard
+   *  config dasboard panel
    * @param {{
    *  characterIcon: string;
    *  enemyName: string;

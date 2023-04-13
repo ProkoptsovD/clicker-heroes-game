@@ -3,12 +3,16 @@ import { Enemy } from '../../lib/Enemy.js';
 export const AlfredoRossi = new Enemy({
   name: 'Alfredo Rossi',
   nickname: 'Big Al',
-  stamina: 10,
+  stamina: 75,
   level: 5,
   className: 'alfredoRossi',
   appearence: '/src/assets/icons/characters/gang_character_05_bar.svg',
   location: '/src/assets/icons/locations/bar.svg',
-  phrases: { intro: 'You made a silly choice.', isArrested: "I'll get out of jail and kill you" },
+  miniIcon: '/src/assets/images/character-icons/gang_character_icon_05.png',
+  phrases: {
+    intro: 'You made a silly choice!',
+    isArrested: "I'll get out of jail and kill you..."
+  },
   dialogues: [
     {
       enemy: 'And here goes the detective {{name}}! Please, sit down. Do me a favour.',

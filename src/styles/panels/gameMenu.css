@@ -93,6 +93,7 @@
 }
 
 .game-menu__item-preview-frame {
+  position: relative;
   background-repeat: no-repeat;
   background-size: 100%;
 
@@ -100,12 +101,24 @@
   -webkit-mask: url('/src/assets/icons/previews/menu_item_preview_frame.svg') right/101% 109%;
 }
 
-.preview {
+.preview,
+.game-menu__score {
   position: absolute;
   top: 51%;
   left: 49%;
   width: 82%;
   transform: translate(-50%, -50%);
+}
+.game-menu__score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  font-weight: 700;
 }
 
 .preview__mask {
@@ -121,10 +134,7 @@
 }
 
 .frame2 {
-  transform: rotateZ(5deg) scale(0.65);
-}
-.frame3 {
-  transform: rotateZ(5deg) scale(0.8);
+  transform: rotateZ(5deg) scale(0.9);
 }
 
 @media screen and (min-width: 420px) {

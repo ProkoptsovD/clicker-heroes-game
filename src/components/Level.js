@@ -1,7 +1,7 @@
 // web components
 import { WebComponent } from '../lib/WebComponent.js';
-import { DashboardPanel } from './panles/DashboardPanel.js';
-import { DialoguePanel } from './panles/DialoguePanel.js';
+import { DashboardPanel } from './panels/DashboardPanel.js';
+import { DialoguePanel } from './panels/DialoguePanel.js';
 
 // classes, not web component
 import { Enemy } from '../lib/Enemy.js';
@@ -22,16 +22,10 @@ export class Level extends WebComponent {
     super({ addSubscription: false });
 
     this.enemy = enemy;
-    this.dialoguePanel = new DialoguePanel({
-      firstSpeakerIcon: this.enemy.appearence,
-      secondSpeakerIcon: this.enemy.appearence,
-      dialogue: this.enemy.dialogues,
-      dialogueOrder: this.enemy.dialogueOrder,
-      dialogueKeys: { first: 'enemy', second: 'detective' },
-      onDialogueEnd: () => this.playLevel()
-    });
+    this.dialoguePanel = dialoguePanel ?? this.createDefaultDialoguePanel();
     this.controlsPanel = controlsPanel;
     this.event = new CustomEvent('levelpassed', { bubbles: true, detail: 2500 });
+    this.END_LEVEL_DELAY = 1500;
 
     this.dashboard = dashboard ?? new DashboardPanel();
   }
@@ -57,6 +51,8 @@ export class Level extends WebComponent {
         return this.endLevel();
       }
 
+      if (stamina === this.enemy.stamina - 1) this.enemy.removeSpeechFrameFromDom();
+
       /** decrements stamina on enemey click */
       this.store.dispatch({ type: DECREMENT_STAMINA, payload: { stamina: stamina - 1 } });
     };
@@ -78,22 +74,47 @@ export class Level extends WebComponent {
     this.store.dispatch({ type: SET_STAMINA, payload: { stamina: +this.enemy.stamina } });
   }
 
+  disconnectedCallback() {
+    clearTimeout(this.endLevelTimeoutID);
+  }
+
   getRefs() {
-    this.levelContainerRef = this.querySelector('.level');
-    this.enemyContainerRef = this.querySelector('.level__enemy-container');
+    this.levelContainerRef = this.querySelector('[data-level]');
+    this.enemyContainerRef = this.querySelector('[data-enemy-container]');
     this.dialogueContainerRef = this.querySelector('[data-dialogue-panel]');
   }
 
   /** start playing level on dialogues end */
   playLevel() {
     this.levelContainerRef.classList.add('play');
+    this.enemy.domElement.classList.add('start-detention');
+    this.enemy.saySpeech('intro');
     this.enableEnemyClick();
   }
 
   /** dispatches event that tells level is passed */
   endLevel() {
-    this.playArrestedAnimation();
-    this.dispatchEvent(this.event);
+    this.enemy.saySpeech('isArrested');
+
+    this.endLevelTimeoutID = setTimeout(() => {
+      this.playArrestedAnimation();
+      this.dispatchEvent(this.event);
+    }, this.END_LEVEL_DELAY);
+  }
+
+  /**
+   * create dafault dialogue
+   * if any other dialogue in not provided
+   */
+  createDefaultDialoguePanel() {
+    return new DialoguePanel({
+      firstSpeakerIcon: this.enemy.miniIcon,
+      secondSpeakerIcon: '/src/assets/images/character-icons/main_hero_icon_01.png',
+      dialogue: this.enemy.dialogues,
+      dialogueOrder: this.enemy.dialogueOrder,
+      dialogueKeys: { first: 'enemy', second: 'detective' },
+      onDialogueEnd: () => this.playLevel()
+    });
   }
 
   /** creates and shows end level animation once the level is passed */
@@ -109,12 +130,12 @@ export class Level extends WebComponent {
 
   /** creates object with props for default dashboard  */
   _mapDashboardProps() {
-    const { appearence, stamina, name, nickname, dashboardTheme } = this.enemy;
+    const { stamina, name, nickname, dashboardTheme, miniIcon } = this.enemy;
 
     return {
       tag: this.dashboard.tag,
       props: {
-        characterIcon: appearence,
+        characterIcon: miniIcon,
         enemyName: name,
         enemyNickname: nickname,
         theme: dashboardTheme,
@@ -129,14 +150,14 @@ export class Level extends WebComponent {
     const dashboard = this._transformIntoTag(props);
 
     this.innerHTML = `
-        <section class="level">
+        <section data-level class="level">
             <header class="level__header">
                 <div data-dashboard-panel class="level__top-dashboard-wrapper hidden">
                     ${dashboard}
                 </div>
             </header>
             
-            <div class="level__enemy-container">
+            <div data-enemy-container class="level__enemy-container">
               <div class="level__enemy-container-bg bg level--${this.enemy.level}" style="background-image: url('${this.enemy.location}')"></div>
             </div>
             

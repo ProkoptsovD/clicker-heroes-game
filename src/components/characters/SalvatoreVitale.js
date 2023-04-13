@@ -3,11 +3,12 @@ import { Enemy } from '../../lib/Enemy.js';
 export const SalvatoreVitale = new Enemy({
   name: 'Salvatore Vitale',
   nickname: 'Good-looking Sal',
-  stamina: 50,
+  stamina: 45,
   level: 3,
   className: 'salvatoreVitale',
   appearence: '/src/assets/icons/characters/gang_character_03_parking.svg',
   location: '/src/assets/icons/locations/undeground_parking.svg',
+  miniIcon: '/src/assets/images/character-icons/gang_character_icon_03.png',
   phrases: { intro: 'What? Did you shit your pants?', isArrested: 'Oh... poor me...' },
   dialogues: [
     {

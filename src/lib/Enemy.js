@@ -23,7 +23,8 @@ export class Enemy {
    * dialogues: Array<{ enemy: string; detective: string }>
    * dialogueOrder: 'topDown' | 'downTop';
    * onClick: () => void;
-   * dashboardTheme: string
+   * dashboardTheme: string,
+   * miniIcon: string;
    * }} config
    */
   constructor({
@@ -39,6 +40,7 @@ export class Enemy {
     dialogues = [],
     dialogueOrder = 'topDown',
     dashboardTheme,
+    miniIcon,
     onClick = () => console.log(`${this.name} is hit`)
   } = {}) {
     this.name = name;
@@ -46,6 +48,7 @@ export class Enemy {
     this.stamina = stamina;
     this.level = level;
     this.size = size;
+    this.miniIcon = miniIcon;
     this.location = location;
     this.phrases = phrases;
     this.appearence = appearence;
