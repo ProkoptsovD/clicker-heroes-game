@@ -5,8 +5,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  [![Logo1](https://raw.githubusercontent.com/ProkoptsovD/clicker-heroes-game/assets/images/logo.png)]
-  [![Logo2](https://raw.githubusercontent.com/ProkoptsovD/clicker-heroes-game/assets/images/edition.png)]
+  
+  <a href="https://github.com/ProkoptsovD/clicker-heroes-game">
+    <img src="./assets/images/logo.png" alt="Logo" width="400" height="auto">
+    <img src="./assets/images/edition.png" alt="Logo" width="200" height="auto">
+  </a>
 
   <p align="center">
     Dead simple clicking game with good story and appealing design
