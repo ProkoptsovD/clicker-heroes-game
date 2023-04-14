@@ -95,15 +95,39 @@ git clone https://github.com/ProkoptsovD/clicker-heroes-game.git
 
 Once it's done, open the folder with project in your IDE (like VS Code) and find file `config.js`:
 
-`/constants/config.js`
+```
+/constants/config.js
+```
 
-then change BASE_URL to empty string:
+then change BASE_URL to empty string like so:
 
-`export const BASE_URL = '';`
+```
+export const BASE_URL = '';
+```
 
-also replace path in index.httm file to be `/index.css` and `/index,js` in script tag and link tag correspondenly
+also several pathes in `index.html` file. Open that file and find line `7`, `8`, `86`:
 
-after that run command in terminal:
+- line 7
+
+```
+<link href="/clicker-heroes-game/index.css" rel="stylesheet"></link>
+```
+
+- line 8
+
+```
+<link rel="icon" type="image/x-icon" href="/clicker-heroes-game/assets/icons/favicon.svg">
+```
+
+- line 86
+
+```
+<script defer src="/clicker-heroes-game/index.js" type="module"></script>
+```
+
+At those lines you need to remove part `/clicker-heroes-game` that is root path for deployed version. Without that the project will download resources from the wrong path. As a result there is no any images and whole project will be broken, 'cause there is no js script file.
+
+After that run command in terminal:
 
 ```js
 npm start
