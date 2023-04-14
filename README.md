@@ -5,18 +5,16 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="/clicker-heroes-game/assets/images/logo.png" alt="Logo" width="400" height="auto">
-  </a>
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="/clicker-heroes-game/assets/images/edition.png" alt="Logo" width="200" height="auto">
+  <a href="https://github.com/ProkoptsovD/clicker-heroes-game">
+    <img src="https://raw.githubusercontent.com/ProkoptsovD/clicker-heroes-game/assets/images/logo.png" alt="Logo" width="400" height="auto">
+    <img src="https://raw.githubusercontent.com/ProkoptsovD/clicker-heroes-game/assets/images/edition.png" alt="Logo" width="200" height="auto">
   </a>
 
   <p align="center">
     Dead simple clicking game with good story and appealing design
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View demo</a>
+    <a href="https://prokoptsovd.github.io/clicker-heroes-game/">View demo</a>
     ·
     <a href="https://t.me/dima_prokoptsov">Report Bug</a>
     ·
