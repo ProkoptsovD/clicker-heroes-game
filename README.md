@@ -5,8 +5,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  ![Logo1](https://raw.githubusercontent.com/ProkoptsovD/clicker-heroes-game/assets/images/logo.png)
-  ![Logo2](https://raw.githubusercontent.com/ProkoptsovD/clicker-heroes-game/assets/images/edition.png)
+  [![Logo1](https://raw.githubusercontent.com/ProkoptsovD/clicker-heroes-game/assets/images/logo.png)]
+  [![Logo2](https://raw.githubusercontent.com/ProkoptsovD/clicker-heroes-game/assets/images/edition.png)]
 
   <p align="center">
     Dead simple clicking game with good story and appealing design
